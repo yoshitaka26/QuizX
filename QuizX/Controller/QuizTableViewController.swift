@@ -10,6 +10,7 @@ import UIKit
 
 class QuizTableViewController: UITableViewController {
     
+
     let quizDataBrain = QuizDataExcelBrain()
     
     override func viewDidLoad() {
@@ -17,9 +18,6 @@ class QuizTableViewController: UITableViewController {
 
         tableView.rowHeight = 80
         
-        
-        self.navigationItem.hidesBackButton = true
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
    
@@ -56,4 +54,7 @@ class QuizTableViewController: UITableViewController {
         }
         
     }
+    
+
+   
 }

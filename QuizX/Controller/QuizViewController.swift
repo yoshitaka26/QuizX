@@ -18,6 +18,11 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var answerDButton: UIButton!
     @IBOutlet weak var moveNextButton: UIButton!
     @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var timeProgressBar: UIProgressView!
+    
+    var timer = Timer()
+    var totalTime: Float = 0
+    var secondsPassed: Float = 0
     
     var quizSetFileName: String = ""
     var quizSetNumber: Int = 0
@@ -43,6 +48,8 @@ class QuizViewController: UIViewController {
     }
     
     @IBAction func buttonSelected(_ sender: UIButton) {
+        
+        timer.invalidate()
         
         if let selectedAnswer = sender.currentTitle {
             if selectedAnswer == quizDataSetLoaded[quizQNumber].correct {
@@ -72,7 +79,7 @@ class QuizViewController: UIViewController {
         } else {
             performSegue(withIdentifier: "ToResultView", sender: self)
         }
-  
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -80,10 +87,7 @@ class QuizViewController: UIViewController {
             let destinationVC = segue.destination as! ResultViewController
             destinationVC.totalPoints = correctPoints
         }
-        
     }
-    
-    
     
     func quizUpdate(with quizDataSet: [QuizDataSet], number: Int) {
         
@@ -123,6 +127,35 @@ class QuizViewController: UIViewController {
         answerBButton.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
         answerCButton.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
         answerDButton.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        
+        setTimer()
+    }
+    
+    
+    
+    func setTimer() {
+        timer.invalidate()
+        
+        totalTime = 4.0
+        
+        timeProgressBar.progress = 0.0
+        secondsPassed = 0
+        
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target:self, selector: #selector(updateTimer), userInfo:nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        if secondsPassed < totalTime {
+            secondsPassed += 1
+            timeProgressBar.progress = Float(secondsPassed) / Float(totalTime)
+        } else {
+            timer.invalidate()
+            resultLabel.text = "タイムアップ"
+            answerLabel.text = quizDataSetLoaded[quizQNumber].answer
+            allButtonOff()
+            moveNextButton.isEnabled = true
+            moveNextButton.setTitle("次へ", for: .normal)
+        }
     }
 }
 
