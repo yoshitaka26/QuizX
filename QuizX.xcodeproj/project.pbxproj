@@ -9,27 +9,35 @@
 /* Begin PBXBuildFile section */
 		E40B1D94246825A200CB8C3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B1D93246825A200CB8C3F /* AppDelegate.swift */; };
 		E40B1D96246825A200CB8C3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B1D95246825A200CB8C3F /* SceneDelegate.swift */; };
-		E40B1D98246825A200CB8C3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B1D97246825A200CB8C3F /* ViewController.swift */; };
+		E40B1D98246825A200CB8C3F /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B1D97246825A200CB8C3F /* QuizViewController.swift */; };
 		E40B1D9B246825A200CB8C3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E40B1D99246825A200CB8C3F /* Main.storyboard */; };
 		E40B1D9D246825A800CB8C3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E40B1D9C246825A800CB8C3F /* Assets.xcassets */; };
 		E40B1DA0246825A800CB8C3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E40B1D9E246825A800CB8C3F /* LaunchScreen.storyboard */; };
-		E40B1DAA24683C7800CB8C3F /* QuizData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B1DA924683C7800CB8C3F /* QuizData.swift */; };
-		E40B1DAD2468561700CB8C3F /* QuizBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B1DAC2468561700CB8C3F /* QuizBrain.swift */; };
 		E40B1DAF2468880400CB8C3F /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B1DAE2468880400CB8C3F /* ResultViewController.swift */; };
+		E40B1DB12468AD2800CB8C3F /* QuizTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B1DB02468AD2800CB8C3F /* QuizTableViewController.swift */; };
+		E43F5692246D1C7100AA1024 /* quizData1_1.json in Resources */ = {isa = PBXBuildFile; fileRef = E43F5691246D1C7100AA1024 /* quizData1_1.json */; };
+		E43F5694246D27D400AA1024 /* quizData1_2.json in Resources */ = {isa = PBXBuildFile; fileRef = E43F5693246D27D400AA1024 /* quizData1_2.json */; };
+		E43F5696246D28F400AA1024 /* quizData1_3.json in Resources */ = {isa = PBXBuildFile; fileRef = E43F5695246D28F400AA1024 /* quizData1_3.json */; };
+		E4DB522C246AD7450044ECBC /* QuizDataExcel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB522B246AD7450044ECBC /* QuizDataExcel.swift */; };
+		E4DB522E246B561E0044ECBC /* QuizDataExcelBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB522D246B561E0044ECBC /* QuizDataExcelBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E40B1D90246825A200CB8C3F /* QuizX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E40B1D93246825A200CB8C3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E40B1D95246825A200CB8C3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E40B1D97246825A200CB8C3F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E40B1D97246825A200CB8C3F /* QuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		E40B1D9A246825A200CB8C3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E40B1D9C246825A800CB8C3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E40B1D9F246825A800CB8C3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E40B1DA1246825A800CB8C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E40B1DA924683C7800CB8C3F /* QuizData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizData.swift; sourceTree = "<group>"; };
-		E40B1DAC2468561700CB8C3F /* QuizBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizBrain.swift; sourceTree = "<group>"; };
 		E40B1DAE2468880400CB8C3F /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		E40B1DB02468AD2800CB8C3F /* QuizTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTableViewController.swift; sourceTree = "<group>"; };
+		E43F5691246D1C7100AA1024 /* quizData1_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quizData1_1.json; sourceTree = "<group>"; };
+		E43F5693246D27D400AA1024 /* quizData1_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quizData1_2.json; sourceTree = "<group>"; };
+		E43F5695246D28F400AA1024 /* quizData1_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quizData1_3.json; sourceTree = "<group>"; };
+		E4DB522B246AD7450044ECBC /* QuizDataExcel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDataExcel.swift; sourceTree = "<group>"; };
+		E4DB522D246B561E0044ECBC /* QuizDataExcelBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDataExcelBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +93,8 @@
 		E40B1DA824683C4C00CB8C3F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E40B1D97246825A200CB8C3F /* ViewController.swift */,
+				E40B1DB02468AD2800CB8C3F /* QuizTableViewController.swift */,
+				E40B1D97246825A200CB8C3F /* QuizViewController.swift */,
 				E40B1DAE2468880400CB8C3F /* ResultViewController.swift */,
 			);
 			path = Controller;
@@ -94,8 +103,11 @@
 		E40B1DAB24683C8000CB8C3F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E40B1DA924683C7800CB8C3F /* QuizData.swift */,
-				E40B1DAC2468561700CB8C3F /* QuizBrain.swift */,
+				E4DB522B246AD7450044ECBC /* QuizDataExcel.swift */,
+				E4DB522D246B561E0044ECBC /* QuizDataExcelBrain.swift */,
+				E43F5691246D1C7100AA1024 /* quizData1_1.json */,
+				E43F5693246D27D400AA1024 /* quizData1_2.json */,
+				E43F5695246D28F400AA1024 /* quizData1_3.json */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -158,9 +170,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E43F5694246D27D400AA1024 /* quizData1_2.json in Resources */,
 				E40B1DA0246825A800CB8C3F /* LaunchScreen.storyboard in Resources */,
 				E40B1D9D246825A800CB8C3F /* Assets.xcassets in Resources */,
 				E40B1D9B246825A200CB8C3F /* Main.storyboard in Resources */,
+				E43F5696246D28F400AA1024 /* quizData1_3.json in Resources */,
+				E43F5692246D1C7100AA1024 /* quizData1_1.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,10 +186,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E40B1DAA24683C7800CB8C3F /* QuizData.swift in Sources */,
-				E40B1D98246825A200CB8C3F /* ViewController.swift in Sources */,
+				E4DB522E246B561E0044ECBC /* QuizDataExcelBrain.swift in Sources */,
+				E40B1DB12468AD2800CB8C3F /* QuizTableViewController.swift in Sources */,
+				E4DB522C246AD7450044ECBC /* QuizDataExcel.swift in Sources */,
+				E40B1D98246825A200CB8C3F /* QuizViewController.swift in Sources */,
 				E40B1D94246825A200CB8C3F /* AppDelegate.swift in Sources */,
-				E40B1DAD2468561700CB8C3F /* QuizBrain.swift in Sources */,
 				E40B1D96246825A200CB8C3F /* SceneDelegate.swift in Sources */,
 				E40B1DAF2468880400CB8C3F /* ResultViewController.swift in Sources */,
 			);
@@ -206,6 +222,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -266,6 +283,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
