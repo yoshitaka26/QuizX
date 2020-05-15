@@ -21,8 +21,9 @@ class WelcomViewCntroller: UIViewController {
         mainLabel.text = "QuizX"
         quizButton.setTitle("クイズ一覧", for: .normal)
         scoreButton.setTitle("成績一覧", for: .normal)
-
         scoreLabel.text = "\(userDefault.integer(forKey: "QuizX"))🔔"
+        
+        
     }
     
     

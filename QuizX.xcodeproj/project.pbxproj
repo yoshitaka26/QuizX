@@ -20,6 +20,8 @@
 		E43F5696246D28F400AA1024 /* quizData1_3.json in Resources */ = {isa = PBXBuildFile; fileRef = E43F5695246D28F400AA1024 /* quizData1_3.json */; };
 		E43F5698246D460100AA1024 /* WelcomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43F5697246D460100AA1024 /* WelcomViewController.swift */; };
 		E43F569A246DF4CF00AA1024 /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43F5699246DF4CF00AA1024 /* ResultTableViewController.swift */; };
+		E43F569E246EAC4F00AA1024 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43F569C246EAC4F00AA1024 /* ResultCell.swift */; };
+		E43F569F246EAC4F00AA1024 /* ResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E43F569D246EAC4F00AA1024 /* ResultCell.xib */; };
 		E4DB522C246AD7450044ECBC /* QuizDataExcel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB522B246AD7450044ECBC /* QuizDataExcel.swift */; };
 		E4DB522E246B561E0044ECBC /* QuizDataExcelBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB522D246B561E0044ECBC /* QuizDataExcelBrain.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +42,8 @@
 		E43F5695246D28F400AA1024 /* quizData1_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quizData1_3.json; sourceTree = "<group>"; };
 		E43F5697246D460100AA1024 /* WelcomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomViewController.swift; sourceTree = "<group>"; };
 		E43F5699246DF4CF00AA1024 /* ResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
+		E43F569C246EAC4F00AA1024 /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
+		E43F569D246EAC4F00AA1024 /* ResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCell.xib; sourceTree = "<group>"; };
 		E4DB522B246AD7450044ECBC /* QuizDataExcel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDataExcel.swift; sourceTree = "<group>"; };
 		E4DB522D246B561E0044ECBC /* QuizDataExcelBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDataExcelBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				E40B1D99246825A200CB8C3F /* Main.storyboard */,
+				E43F569C246EAC4F00AA1024 /* ResultCell.swift */,
+				E43F569D246EAC4F00AA1024 /* ResultCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -98,10 +104,10 @@
 			isa = PBXGroup;
 			children = (
 				E43F5697246D460100AA1024 /* WelcomViewController.swift */,
+				E43F5699246DF4CF00AA1024 /* ResultTableViewController.swift */,
 				E40B1DB02468AD2800CB8C3F /* QuizTableViewController.swift */,
 				E40B1D97246825A200CB8C3F /* QuizViewController.swift */,
 				E40B1DAE2468880400CB8C3F /* ResultViewController.swift */,
-				E43F5699246DF4CF00AA1024 /* ResultTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -111,11 +117,19 @@
 			children = (
 				E4DB522B246AD7450044ECBC /* QuizDataExcel.swift */,
 				E4DB522D246B561E0044ECBC /* QuizDataExcelBrain.swift */,
+				E43F569B246E6BE000AA1024 /* Data */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E43F569B246E6BE000AA1024 /* Data */ = {
+			isa = PBXGroup;
+			children = (
 				E43F5691246D1C7100AA1024 /* quizData1_1.json */,
 				E43F5693246D27D400AA1024 /* quizData1_2.json */,
 				E43F5695246D28F400AA1024 /* quizData1_3.json */,
 			);
-			path = Model;
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +192,7 @@
 			files = (
 				E43F5694246D27D400AA1024 /* quizData1_2.json in Resources */,
 				E40B1DA0246825A800CB8C3F /* LaunchScreen.storyboard in Resources */,
+				E43F569F246EAC4F00AA1024 /* ResultCell.xib in Resources */,
 				E40B1D9D246825A800CB8C3F /* Assets.xcassets in Resources */,
 				E40B1D9B246825A200CB8C3F /* Main.storyboard in Resources */,
 				E43F5696246D28F400AA1024 /* quizData1_3.json in Resources */,
@@ -200,6 +215,7 @@
 				E43F569A246DF4CF00AA1024 /* ResultTableViewController.swift in Sources */,
 				E40B1D94246825A200CB8C3F /* AppDelegate.swift in Sources */,
 				E40B1D96246825A200CB8C3F /* SceneDelegate.swift in Sources */,
+				E43F569E246EAC4F00AA1024 /* ResultCell.swift in Sources */,
 				E40B1DAF2468880400CB8C3F /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

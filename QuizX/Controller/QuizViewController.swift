@@ -86,6 +86,8 @@ class QuizViewController: UIViewController {
         if segue.identifier == "ToResultView" {
             let destinationVC = segue.destination as! ResultViewController
             destinationVC.totalPoints = correctPoints
+            destinationVC.quizSetNumber = quizSetNumber
+            destinationVC.totalQuizNum = quizDataSetLoaded.count
         }
     }
     

@@ -15,7 +15,10 @@ class ResultViewController: UIViewController {
     
     @IBOutlet weak var returnButton: UIButton!
     var totalPoints: Int = 0
+    var totalQuizNum: Int = 0
+    var quizSetNumber: Int = 0
     let userDefault = UserDefaults.standard
+    var quizDataExcelBrain = QuizDataExcelBrain()
     
     
     override func viewDidLoad() {
@@ -25,6 +28,9 @@ class ResultViewController: UIViewController {
         resultPointsLabel.text = "\(totalPoints)点"
         let allPoints = userDefault.integer(forKey: "QuizX") + totalPoints
         userDefault.set(allPoints, forKey: "QuizX")
+        let score = "\(totalPoints) / \(totalQuizNum)"
+        let quizSetName = quizDataExcelBrain.quizDataSetNameArray[quizSetNumber]
+        userDefault.set(score, forKey: quizSetName)
         
     }
     

@@ -11,34 +11,33 @@ import UIKit
 class ResultTableViewController: UITableViewController {
     
     let quizDataBrain = QuizDataExcelBrain()
-    
+    let userDefault = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.rowHeight = 100
+
+        tableView.register(UINib(nibName: "ResultCell", bundle: nil), forCellReuseIdentifier: "resultCell")
 
     }
 
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//
-//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return quizDataBrain.quizDataSetNameArray.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath) as! ResultCell
+        let quizSetName = quizDataBrain.quizDataSetNameArray[indexPath.row]
+        
+        cell.quizSetNameLabel.text = quizSetName
+        
+        if let score = userDefault.string(forKey: quizSetName) {
+            cell.quizScoreResultLabel.text = "正答数 " + score
+        }
+       
         return cell
     }
 

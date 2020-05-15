@@ -50,7 +50,10 @@
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="fYi-Zb-un8"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                        <state key="normal" title="Button"/>
+                                                        <state key="normal" title="Button">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="quizButton:" destination="fSn-5C-rWs" eventType="touchUpInside" id="56i-gy-X9G"/>
                                                         </connections>
@@ -62,10 +65,11 @@
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="QfH-Kh-AmL"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                        <state key="normal" title="Button"/>
+                                                        <state key="normal" title="Button">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="scoreButton:" destination="fSn-5C-rWs" eventType="touchUpInside" id="VXD-DY-9sh"/>
-                                                            <segue destination="3HO-7g-jgv" kind="show" identifier="ToResultView" id="kS5-u0-nAM"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -114,6 +118,7 @@
                         <outlet property="scoreButton" destination="OWi-Qg-Pdu" id="eFW-yB-Tg2"/>
                         <outlet property="scoreLabel" destination="hx6-yg-XiK" id="8E8-lR-DOM"/>
                         <segue destination="aEL-up-agD" kind="show" identifier="ToQuizList" id="aBj-aI-bpi"/>
+                        <segue destination="gwW-Wp-5A8" kind="show" identifier="ToResultView" id="l5A-FS-gNF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7cJ-dY-oRl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -307,43 +312,12 @@
                     <navigationItem key="navigationItem" id="Xdf-Zu-REY"/>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="ToQuizView" id="ft9-Bs-aBP"/>
+                        <segue destination="gwW-Wp-5A8" kind="show" identifier="ToResult" id="l6P-t0-biX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fjj-oF-89l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="943" y="115"/>
-        </scene>
-        <!--Result Table View Controller-->
-        <scene sceneID="h9L-s1-5AJ">
-            <objects>
-                <tableViewController id="3HO-7g-jgv" customClass="ResultTableViewController" customModule="QuizX" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nFy-9J-CfS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wRP-gc-UNq">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wRP-gc-UNq" id="qzU-0a-mPJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="3HO-7g-jgv" id="fxc-js-TsX"/>
-                            <outlet property="delegate" destination="3HO-7g-jgv" id="Pl0-io-tL9"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="WYm-ic-Wnd"/>
-                    <connections>
-                        <segue destination="aEL-up-agD" kind="show" identifier="ToNavigationView" id="L0j-nS-MMO"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oZx-Jz-RcW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1181" y="917"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="WWe-Ij-QJx">
@@ -443,6 +417,25 @@
             </objects>
             <point key="canvasLocation" x="3060.8695652173915" y="-608.03571428571422"/>
         </scene>
+        <!--Result Table View Controller-->
+        <scene sceneID="guZ-qa-HCf">
+            <objects>
+                <tableViewController id="gwW-Wp-5A8" customClass="ResultTableViewController" customModule="QuizX" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RgM-td-Ceo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="gwW-Wp-5A8" id="sRC-WS-Nfj"/>
+                            <outlet property="delegate" destination="gwW-Wp-5A8" id="Jxj-X9-nde"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="a06-x5-xfS"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oAp-7N-KCP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-846" y="827"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="zC1-AW-IKk">
             <objects>
@@ -464,7 +457,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="L0j-nS-MMO"/>
+        <segue reference="SEW-oR-dMI"/>
+        <segue reference="l6P-t0-biX"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="p.circle" catalog="system" width="128" height="121"/>

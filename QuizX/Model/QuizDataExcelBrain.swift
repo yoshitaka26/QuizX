@@ -12,6 +12,7 @@ struct QuizDataExcelBrain {
     
     let quizDataSetFileNameArray = ["quizData1_1", "quizData1_2", "quizData1_3"]
     let quizDataSetNameArray = ["語源クイズ１", "語源クイズ２", "語源クイズ３"]
+    var scoreDictionary: [String: String] = ["語源クイズ１": "", "語源クイズ２": "", "語源クイズ３": ""]
     
     func getQuizDataFromJSONFile(with fileName: String) -> [QuizDataSet]? {
         let decoder = JSONDecoder()
