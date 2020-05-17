@@ -15,6 +15,8 @@
 		E40B1DA0246825A800CB8C3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E40B1D9E246825A800CB8C3F /* LaunchScreen.storyboard */; };
 		E40B1DAF2468880400CB8C3F /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B1DAE2468880400CB8C3F /* ResultViewController.swift */; };
 		E40B1DB12468AD2800CB8C3F /* QuizTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B1DB02468AD2800CB8C3F /* QuizTableViewController.swift */; };
+		E437175C2470418100F76A0B /* quizData2_1.json in Resources */ = {isa = PBXBuildFile; fileRef = E437175B2470418100F76A0B /* quizData2_1.json */; };
+		E43F042E24712BA6003B8606 /* scoreBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43F042D24712BA6003B8606 /* scoreBrain.swift */; };
 		E43F5692246D1C7100AA1024 /* quizData1_1.json in Resources */ = {isa = PBXBuildFile; fileRef = E43F5691246D1C7100AA1024 /* quizData1_1.json */; };
 		E43F5694246D27D400AA1024 /* quizData1_2.json in Resources */ = {isa = PBXBuildFile; fileRef = E43F5693246D27D400AA1024 /* quizData1_2.json */; };
 		E43F5696246D28F400AA1024 /* quizData1_3.json in Resources */ = {isa = PBXBuildFile; fileRef = E43F5695246D28F400AA1024 /* quizData1_3.json */; };
@@ -37,6 +39,8 @@
 		E40B1DA1246825A800CB8C3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E40B1DAE2468880400CB8C3F /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		E40B1DB02468AD2800CB8C3F /* QuizTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTableViewController.swift; sourceTree = "<group>"; };
+		E437175B2470418100F76A0B /* quizData2_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quizData2_1.json; sourceTree = "<group>"; };
+		E43F042D24712BA6003B8606 /* scoreBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scoreBrain.swift; sourceTree = "<group>"; };
 		E43F5691246D1C7100AA1024 /* quizData1_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quizData1_1.json; sourceTree = "<group>"; };
 		E43F5693246D27D400AA1024 /* quizData1_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quizData1_2.json; sourceTree = "<group>"; };
 		E43F5695246D28F400AA1024 /* quizData1_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quizData1_3.json; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 		E40B1DAB24683C8000CB8C3F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E43F042D24712BA6003B8606 /* scoreBrain.swift */,
 				E4DB522B246AD7450044ECBC /* QuizDataExcel.swift */,
 				E4DB522D246B561E0044ECBC /* QuizDataExcelBrain.swift */,
 				E43F569B246E6BE000AA1024 /* Data */,
@@ -128,6 +133,7 @@
 				E43F5691246D1C7100AA1024 /* quizData1_1.json */,
 				E43F5693246D27D400AA1024 /* quizData1_2.json */,
 				E43F5695246D28F400AA1024 /* quizData1_3.json */,
+				E437175B2470418100F76A0B /* quizData2_1.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -195,6 +201,7 @@
 				E43F569F246EAC4F00AA1024 /* ResultCell.xib in Resources */,
 				E40B1D9D246825A800CB8C3F /* Assets.xcassets in Resources */,
 				E40B1D9B246825A200CB8C3F /* Main.storyboard in Resources */,
+				E437175C2470418100F76A0B /* quizData2_1.json in Resources */,
 				E43F5696246D28F400AA1024 /* quizData1_3.json in Resources */,
 				E43F5692246D1C7100AA1024 /* quizData1_1.json in Resources */,
 			);
@@ -214,6 +221,7 @@
 				E40B1D98246825A200CB8C3F /* QuizViewController.swift in Sources */,
 				E43F569A246DF4CF00AA1024 /* ResultTableViewController.swift in Sources */,
 				E40B1D94246825A200CB8C3F /* AppDelegate.swift in Sources */,
+				E43F042E24712BA6003B8606 /* scoreBrain.swift in Sources */,
 				E40B1D96246825A200CB8C3F /* SceneDelegate.swift in Sources */,
 				E43F569E246EAC4F00AA1024 /* ResultCell.swift in Sources */,
 				E40B1DAF2468880400CB8C3F /* ResultViewController.swift in Sources */,

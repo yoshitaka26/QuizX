@@ -35,8 +35,10 @@ class ResultTableViewController: UITableViewController {
         cell.quizSetNameLabel.text = quizSetName
         
         if let score = userDefault.string(forKey: quizSetName) {
-            cell.quizScoreResultLabel.text = "正答数 " + score
+            cell.quizScoreResultLabel.text = "スコア " + score
         }
+        let time = userDefault.integer(forKey: quizSetName + "t")
+        cell.quizScoreResultLabel.text?.append(contentsOf: "                   タイム \(time)秒")
        
         return cell
     }

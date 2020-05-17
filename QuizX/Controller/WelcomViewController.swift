@@ -23,7 +23,6 @@ class WelcomViewCntroller: UIViewController {
         scoreButton.setTitle("成績一覧", for: .normal)
         scoreLabel.text = "\(userDefault.integer(forKey: "QuizX"))🔔"
         
-        
     }
     
     

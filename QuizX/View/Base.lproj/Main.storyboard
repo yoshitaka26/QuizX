@@ -123,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7cJ-dY-oRl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1674" y="96"/>
+            <point key="canvasLocation" x="-1681" y="115"/>
         </scene>
         <!--Quiz View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -140,7 +140,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="248"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jn-dD-lUH">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                                                <rect key="frame" x="20" y="0.0" width="374" height="216"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -153,11 +153,11 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="xsF-jJ-mAI" secondAttribute="trailing" constant="10" id="2dT-Fg-eOF"/>
-                                            <constraint firstAttribute="trailing" secondItem="7jn-dD-lUH" secondAttribute="trailing" id="8VB-77-MQz"/>
+                                            <constraint firstAttribute="trailing" secondItem="7jn-dD-lUH" secondAttribute="trailing" constant="20" id="8VB-77-MQz"/>
                                             <constraint firstItem="7jn-dD-lUH" firstAttribute="top" secondItem="JEe-bn-p5s" secondAttribute="top" id="G1C-uQ-rDG"/>
                                             <constraint firstItem="xsF-jJ-mAI" firstAttribute="top" secondItem="7jn-dD-lUH" secondAttribute="bottom" constant="20" id="PJC-XY-RoC"/>
                                             <constraint firstItem="xsF-jJ-mAI" firstAttribute="centerX" secondItem="JEe-bn-p5s" secondAttribute="centerX" id="XTz-29-GLM"/>
-                                            <constraint firstItem="7jn-dD-lUH" firstAttribute="leading" secondItem="JEe-bn-p5s" secondAttribute="leading" id="f7M-v9-ZJ8"/>
+                                            <constraint firstItem="7jn-dD-lUH" firstAttribute="leading" secondItem="JEe-bn-p5s" secondAttribute="leading" constant="20" id="f7M-v9-ZJ8"/>
                                             <constraint firstAttribute="bottom" secondItem="xsF-jJ-mAI" secondAttribute="bottom" constant="10" id="fRk-gb-1t0"/>
                                             <constraint firstItem="xsF-jJ-mAI" firstAttribute="leading" secondItem="JEe-bn-p5s" secondAttribute="leading" constant="10" id="t7G-eJ-syE"/>
                                         </constraints>
@@ -333,8 +333,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hNA-n0-COD">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="250.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="p.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Lkw-Hj-VmF">
-                                                <rect key="frame" x="157" y="76" width="100" height="99"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Lkw-Hj-VmF">
+                                                <rect key="frame" x="157" y="78" width="100" height="95"/>
                                                 <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="DA3-hz-72C"/>
@@ -350,24 +350,41 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mOt-T5-87z">
                                         <rect key="frame" x="0.0" y="250.5" width="414" height="251"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbg-MN-8Xz">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="LPj-0W-ce7">
                                                 <rect key="frame" x="10" y="10" width="394" height="231"/>
-                                                <attributedString key="attributedText">
-                                                    <fragment content="Label">
-                                                        <attributes>
-                                                            <font key="NSFont" metaFont="system" size="36"/>
-                                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9I-rn-euY" userLabel="Points Label">
+                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="115.5"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Label">
+                                                                <attributes>
+                                                                    <font key="NSFont" metaFont="system" size="36"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbg-MN-8Xz" userLabel="Time Label">
+                                                        <rect key="frame" x="0.0" y="115.5" width="394" height="115.5"/>
+                                                        <attributedString key="attributedText">
+                                                            <fragment content="Label">
+                                                                <attributes>
+                                                                    <font key="NSFont" metaFont="system" size="36"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Fbg-MN-8Xz" secondAttribute="trailing" constant="10" id="4ST-pk-YCH"/>
-                                            <constraint firstItem="Fbg-MN-8Xz" firstAttribute="leading" secondItem="mOt-T5-87z" secondAttribute="leading" constant="10" id="9cX-xf-LKa"/>
-                                            <constraint firstAttribute="bottom" secondItem="Fbg-MN-8Xz" secondAttribute="bottom" constant="10" id="Osj-3n-VT3"/>
-                                            <constraint firstItem="Fbg-MN-8Xz" firstAttribute="top" secondItem="mOt-T5-87z" secondAttribute="top" constant="10" id="osQ-nz-p1l"/>
+                                            <constraint firstAttribute="bottom" secondItem="LPj-0W-ce7" secondAttribute="bottom" constant="10" id="6Zl-Oy-POj"/>
+                                            <constraint firstAttribute="trailing" secondItem="LPj-0W-ce7" secondAttribute="trailing" constant="10" id="6ji-lU-Cmj"/>
+                                            <constraint firstItem="LPj-0W-ce7" firstAttribute="leading" secondItem="mOt-T5-87z" secondAttribute="leading" constant="10" id="WuU-w6-v25"/>
+                                            <constraint firstItem="LPj-0W-ce7" firstAttribute="top" secondItem="mOt-T5-87z" secondAttribute="top" constant="10" id="aaI-ne-hCs"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tx8-O3-B3D">
@@ -408,9 +425,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="1oT-hC-bRL"/>
                     <connections>
-                        <outlet property="resultPointsLabel" destination="Fbg-MN-8Xz" id="nCR-xL-IrK"/>
+                        <outlet property="pointsLabel" destination="C9I-rn-euY" id="Tpb-3b-Q0q"/>
                         <outlet property="returnButton" destination="H9w-t6-KAS" id="cbM-B9-XkP"/>
-                        <segue destination="aEL-up-agD" kind="show" identifier="ToQuizSetsList" id="SEW-oR-dMI"/>
+                        <outlet property="timeLabel" destination="Fbg-MN-8Xz" id="meh-uR-UtQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bOr-52-5ib" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -434,7 +451,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAp-7N-KCP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-846" y="827"/>
+            <point key="canvasLocation" x="-925" y="1059"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zC1-AW-IKk">
@@ -457,10 +474,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SEW-oR-dMI"/>
-        <segue reference="l6P-t0-biX"/>
+        <segue reference="l5A-FS-gNF"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="p.circle" catalog="system" width="128" height="121"/>
+        <image name="cloud" catalog="system" width="128" height="87"/>
     </resources>
 </document>

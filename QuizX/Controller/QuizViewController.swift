@@ -23,6 +23,7 @@ class QuizViewController: UIViewController {
     var timer = Timer()
     var totalTime: Float = 0
     var secondsPassed: Float = 0
+    var answeredTime: Float = 0
     
     var quizSetFileName: String = ""
     var quizSetNumber: Int = 0
@@ -49,8 +50,6 @@ class QuizViewController: UIViewController {
     
     @IBAction func buttonSelected(_ sender: UIButton) {
         
-        timer.invalidate()
-        
         if let selectedAnswer = sender.currentTitle {
             if selectedAnswer == quizDataSetLoaded[quizQNumber].correct {
                 sender.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
@@ -58,28 +57,30 @@ class QuizViewController: UIViewController {
                 resultLabel.text = "正解"
                 answerLabel.text = quizDataSetLoaded[quizQNumber].answer
                 allButtonOff()
-                moveNextButton.isEnabled = true
+                
                 
             } else {
-                sender.backgroundColor = #colorLiteral(red: 0.3176470697, green: 0.07450980693, blue: 0.02745098062, alpha: 1)
+                sender.backgroundColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
                 resultLabel.text = "不正解"
                 answerLabel.text = quizDataSetLoaded[quizQNumber].answer
                 allButtonOff()
-                moveNextButton.isEnabled = true
+                
             }
         }
+        
+        moveNextButton.isEnabled = true
         moveNextButton.setTitle("次へ", for: .normal)
     }
     
     @IBAction func moveNextButton(_ sender: UIButton) {
-        
-        if quizQNumber < quizDataSetLoaded.count - 1 {
-            quizQNumber += 1
-            quizUpdate(with: quizDataSetLoaded, number: quizQNumber)
-        } else {
-            performSegue(withIdentifier: "ToResultView", sender: self)
+        if questionLabel.text == quizDataSetLoaded[quizQNumber].question {
+            if quizQNumber < quizDataSetLoaded.count - 1 {
+                quizQNumber += 1
+                quizUpdate(with: quizDataSetLoaded, number: quizQNumber)
+            } else {
+                performSegue(withIdentifier: "ToResultView", sender: self)
+            }
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -88,6 +89,7 @@ class QuizViewController: UIViewController {
             destinationVC.totalPoints = correctPoints
             destinationVC.quizSetNumber = quizSetNumber
             destinationVC.totalQuizNum = quizDataSetLoaded.count
+            destinationVC.totalAnswerdtime = answeredTime
         }
     }
     
@@ -100,7 +102,6 @@ class QuizViewController: UIViewController {
         var answerArray = [a1, a2, a3, a4]
         answerArray.shuffle()
         
-        questionLabel.text = quizDataSet[number].question
         resultLabel.text = ""
         answerLabel.text = ""
         moveNextButton.setTitle("", for: .normal)
@@ -111,13 +112,39 @@ class QuizViewController: UIViewController {
         answerCButton.setTitle(answerArray[2], for: .normal)
         answerDButton.setTitle(answerArray[3], for: .normal)
         
+        if quizSetNumber == 3 {
+            questionLabel.text = ""
+            questionLabel.textAlignment = .left
+            
+            let questionText = quizDataSet[number].question
+            
+            var charIndex = 0.0
+            
+            for letter in questionText {
+                
+                Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { (timer) in
+                    DispatchQueue.main.async {
+                        self.questionLabel.text?.append(letter)
+                    }
+                }
+                charIndex += 1
+            }
+        } else  {
+            questionLabel.text = quizDataSet[number].question
+        }
     }
     
+    
+    
+    
     func allButtonOff() {
+        answeredTime += secondsPassed
+        timer.invalidate()
         answerAButton.isEnabled = false
         answerBButton.isEnabled = false
         answerCButton.isEnabled = false
         answerDButton.isEnabled = false
+        
     }
     
     func allButtonON() {
@@ -138,7 +165,7 @@ class QuizViewController: UIViewController {
     func setTimer() {
         timer.invalidate()
         
-        totalTime = 4.0
+        totalTime = 20.0
         
         timeProgressBar.progress = 0.0
         secondsPassed = 0
