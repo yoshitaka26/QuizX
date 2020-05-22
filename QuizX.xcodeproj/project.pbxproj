@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3620583879EB3DA40F7B8A0A /* Pods_QuizX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B314009DF1CDE2E131CB06B /* Pods_QuizX.framework */; };
 		E40B1D94246825A200CB8C3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B1D93246825A200CB8C3F /* AppDelegate.swift */; };
 		E40B1D96246825A200CB8C3F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B1D95246825A200CB8C3F /* SceneDelegate.swift */; };
 		E40B1D98246825A200CB8C3F /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B1D97246825A200CB8C3F /* QuizViewController.swift */; };
@@ -16,7 +17,13 @@
 		E40B1DAF2468880400CB8C3F /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B1DAE2468880400CB8C3F /* ResultViewController.swift */; };
 		E40B1DB12468AD2800CB8C3F /* QuizTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B1DB02468AD2800CB8C3F /* QuizTableViewController.swift */; };
 		E437175C2470418100F76A0B /* quizData2_1.json in Resources */ = {isa = PBXBuildFile; fileRef = E437175B2470418100F76A0B /* quizData2_1.json */; };
+		E43CF1FF24742D2300589B6C /* firestoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43CF1FE24742D2300589B6C /* firestoreData.swift */; };
+		E43CF201247491C900589B6C /* QuizDataFS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43CF200247491C900589B6C /* QuizDataFS.swift */; };
 		E43F042E24712BA6003B8606 /* scoreBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43F042D24712BA6003B8606 /* scoreBrain.swift */; };
+		E43F0430247176E4003B8606 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E43F042F247176E4003B8606 /* GoogleService-Info.plist */; };
+		E43F0432247188EF003B8606 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43F0431247188EF003B8606 /* StartViewController.swift */; };
+		E43F04342471891B003B8606 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43F04332471891B003B8606 /* RegisterViewController.swift */; };
+		E43F043624718935003B8606 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43F043524718935003B8606 /* LoginViewController.swift */; };
 		E43F5692246D1C7100AA1024 /* quizData1_1.json in Resources */ = {isa = PBXBuildFile; fileRef = E43F5691246D1C7100AA1024 /* quizData1_1.json */; };
 		E43F5694246D27D400AA1024 /* quizData1_2.json in Resources */ = {isa = PBXBuildFile; fileRef = E43F5693246D27D400AA1024 /* quizData1_2.json */; };
 		E43F5696246D28F400AA1024 /* quizData1_3.json in Resources */ = {isa = PBXBuildFile; fileRef = E43F5695246D28F400AA1024 /* quizData1_3.json */; };
@@ -24,11 +31,16 @@
 		E43F569A246DF4CF00AA1024 /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43F5699246DF4CF00AA1024 /* ResultTableViewController.swift */; };
 		E43F569E246EAC4F00AA1024 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43F569C246EAC4F00AA1024 /* ResultCell.swift */; };
 		E43F569F246EAC4F00AA1024 /* ResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E43F569D246EAC4F00AA1024 /* ResultCell.xib */; };
+		E4667C8624766AD3001A972E /* QuizDataFSBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4667C8524766AD3001A972E /* QuizDataFSBrain.swift */; };
+		E4667C8824771DD8001A972E /* QuizChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4667C8724771DD8001A972E /* QuizChallengeViewController.swift */; };
 		E4DB522C246AD7450044ECBC /* QuizDataExcel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB522B246AD7450044ECBC /* QuizDataExcel.swift */; };
 		E4DB522E246B561E0044ECBC /* QuizDataExcelBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB522D246B561E0044ECBC /* QuizDataExcelBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4AD46E73F4E22AF9DDB6479A /* Pods-QuizX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizX.release.xcconfig"; path = "Target Support Files/Pods-QuizX/Pods-QuizX.release.xcconfig"; sourceTree = "<group>"; };
+		663D082C2ED93F2289075CB3 /* Pods-QuizX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuizX.debug.xcconfig"; path = "Target Support Files/Pods-QuizX/Pods-QuizX.debug.xcconfig"; sourceTree = "<group>"; };
+		7B314009DF1CDE2E131CB06B /* Pods_QuizX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuizX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E40B1D90246825A200CB8C3F /* QuizX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E40B1D93246825A200CB8C3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E40B1D95246825A200CB8C3F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,7 +52,13 @@
 		E40B1DAE2468880400CB8C3F /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		E40B1DB02468AD2800CB8C3F /* QuizTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizTableViewController.swift; sourceTree = "<group>"; };
 		E437175B2470418100F76A0B /* quizData2_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quizData2_1.json; sourceTree = "<group>"; };
+		E43CF1FE24742D2300589B6C /* firestoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = firestoreData.swift; sourceTree = "<group>"; };
+		E43CF200247491C900589B6C /* QuizDataFS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDataFS.swift; sourceTree = "<group>"; };
 		E43F042D24712BA6003B8606 /* scoreBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scoreBrain.swift; sourceTree = "<group>"; };
+		E43F042F247176E4003B8606 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E43F0431247188EF003B8606 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		E43F04332471891B003B8606 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		E43F043524718935003B8606 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E43F5691246D1C7100AA1024 /* quizData1_1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quizData1_1.json; sourceTree = "<group>"; };
 		E43F5693246D27D400AA1024 /* quizData1_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quizData1_2.json; sourceTree = "<group>"; };
 		E43F5695246D28F400AA1024 /* quizData1_3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quizData1_3.json; sourceTree = "<group>"; };
@@ -48,6 +66,8 @@
 		E43F5699246DF4CF00AA1024 /* ResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		E43F569C246EAC4F00AA1024 /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 		E43F569D246EAC4F00AA1024 /* ResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCell.xib; sourceTree = "<group>"; };
+		E4667C8524766AD3001A972E /* QuizDataFSBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDataFSBrain.swift; sourceTree = "<group>"; };
+		E4667C8724771DD8001A972E /* QuizChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizChallengeViewController.swift; sourceTree = "<group>"; };
 		E4DB522B246AD7450044ECBC /* QuizDataExcel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDataExcel.swift; sourceTree = "<group>"; };
 		E4DB522D246B561E0044ECBC /* QuizDataExcelBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDataExcelBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -57,17 +77,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3620583879EB3DA40F7B8A0A /* Pods_QuizX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E35DC822FC5AF2E67EF9AF8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B314009DF1CDE2E131CB06B /* Pods_QuizX.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		634B06D4FCF3A3ADDAF14DD3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				663D082C2ED93F2289075CB3 /* Pods-QuizX.debug.xcconfig */,
+				4AD46E73F4E22AF9DDB6479A /* Pods-QuizX.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E40B1D87246825A200CB8C3F = {
 			isa = PBXGroup;
 			children = (
 				E40B1D92246825A200CB8C3F /* QuizX */,
 				E40B1D91246825A200CB8C3F /* Products */,
+				634B06D4FCF3A3ADDAF14DD3 /* Pods */,
+				1E35DC822FC5AF2E67EF9AF8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +130,7 @@
 				E40B1D9C246825A800CB8C3F /* Assets.xcassets */,
 				E40B1D9E246825A800CB8C3F /* LaunchScreen.storyboard */,
 				E40B1DA1246825A800CB8C3F /* Info.plist */,
+				E43F042F247176E4003B8606 /* GoogleService-Info.plist */,
 			);
 			path = QuizX;
 			sourceTree = "<group>";
@@ -107,10 +148,12 @@
 		E40B1DA824683C4C00CB8C3F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E43F04372471894B003B8606 /* Login */,
 				E43F5697246D460100AA1024 /* WelcomViewController.swift */,
-				E43F5699246DF4CF00AA1024 /* ResultTableViewController.swift */,
 				E40B1DB02468AD2800CB8C3F /* QuizTableViewController.swift */,
+				E4667C8724771DD8001A972E /* QuizChallengeViewController.swift */,
 				E40B1D97246825A200CB8C3F /* QuizViewController.swift */,
+				E43F5699246DF4CF00AA1024 /* ResultTableViewController.swift */,
 				E40B1DAE2468880400CB8C3F /* ResultViewController.swift */,
 			);
 			path = Controller;
@@ -122,9 +165,22 @@
 				E43F042D24712BA6003B8606 /* scoreBrain.swift */,
 				E4DB522B246AD7450044ECBC /* QuizDataExcel.swift */,
 				E4DB522D246B561E0044ECBC /* QuizDataExcelBrain.swift */,
+				E43CF200247491C900589B6C /* QuizDataFS.swift */,
+				E4667C8524766AD3001A972E /* QuizDataFSBrain.swift */,
 				E43F569B246E6BE000AA1024 /* Data */,
+				E43CF1FE24742D2300589B6C /* firestoreData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E43F04372471894B003B8606 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E43F0431247188EF003B8606 /* StartViewController.swift */,
+				E43F04332471891B003B8606 /* RegisterViewController.swift */,
+				E43F043524718935003B8606 /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		E43F569B246E6BE000AA1024 /* Data */ = {
@@ -145,9 +201,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E40B1DA4246825A800CB8C3F /* Build configuration list for PBXNativeTarget "QuizX" */;
 			buildPhases = (
+				D693B3FF4D51AEC7338EC9C8 /* [CP] Check Pods Manifest.lock */,
 				E40B1D8C246825A200CB8C3F /* Sources */,
 				E40B1D8D246825A200CB8C3F /* Frameworks */,
 				E40B1D8E246825A200CB8C3F /* Resources */,
+				D439256AD7B01786737FBFC0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -198,6 +256,7 @@
 			files = (
 				E43F5694246D27D400AA1024 /* quizData1_2.json in Resources */,
 				E40B1DA0246825A800CB8C3F /* LaunchScreen.storyboard in Resources */,
+				E43F0430247176E4003B8606 /* GoogleService-Info.plist in Resources */,
 				E43F569F246EAC4F00AA1024 /* ResultCell.xib in Resources */,
 				E40B1D9D246825A800CB8C3F /* Assets.xcassets in Resources */,
 				E40B1D9B246825A200CB8C3F /* Main.storyboard in Resources */,
@@ -209,20 +268,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D439256AD7B01786737FBFC0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuizX/Pods-QuizX-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuizX/Pods-QuizX-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuizX/Pods-QuizX-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D693B3FF4D51AEC7338EC9C8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QuizX-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E40B1D8C246825A200CB8C3F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E43F043624718935003B8606 /* LoginViewController.swift in Sources */,
 				E4DB522E246B561E0044ECBC /* QuizDataExcelBrain.swift in Sources */,
 				E40B1DB12468AD2800CB8C3F /* QuizTableViewController.swift in Sources */,
+				E4667C8824771DD8001A972E /* QuizChallengeViewController.swift in Sources */,
+				E43CF1FF24742D2300589B6C /* firestoreData.swift in Sources */,
 				E4DB522C246AD7450044ECBC /* QuizDataExcel.swift in Sources */,
 				E43F5698246D460100AA1024 /* WelcomViewController.swift in Sources */,
 				E40B1D98246825A200CB8C3F /* QuizViewController.swift in Sources */,
+				E43F0432247188EF003B8606 /* StartViewController.swift in Sources */,
 				E43F569A246DF4CF00AA1024 /* ResultTableViewController.swift in Sources */,
 				E40B1D94246825A200CB8C3F /* AppDelegate.swift in Sources */,
 				E43F042E24712BA6003B8606 /* scoreBrain.swift in Sources */,
+				E4667C8624766AD3001A972E /* QuizDataFSBrain.swift in Sources */,
 				E40B1D96246825A200CB8C3F /* SceneDelegate.swift in Sources */,
+				E43F04342471891B003B8606 /* RegisterViewController.swift in Sources */,
+				E43CF201247491C900589B6C /* QuizDataFS.swift in Sources */,
 				E43F569E246EAC4F00AA1024 /* ResultCell.swift in Sources */,
 				E40B1DAF2468880400CB8C3F /* ResultViewController.swift in Sources */,
 			);
@@ -368,6 +476,7 @@
 		};
 		E40B1DA5246825A800CB8C3F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 663D082C2ED93F2289075CB3 /* Pods-QuizX.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -387,6 +496,7 @@
 		};
 		E40B1DA6246825A800CB8C3F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AD46E73F4E22AF9DDB6479A /* Pods-QuizX.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

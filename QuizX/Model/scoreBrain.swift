@@ -11,23 +11,27 @@ import Foundation
 struct ScoreBrain {
     
     let userDefault = UserDefaults.standard
-    var quizDataExcelBrain = QuizDataExcelBrain()
+    let quizNames = QuizName()
     
     func scoreRecord(_ totalPoints: Int, _ totalQuizNum: Int, _ quizSetNumber: Int, _ totalTime: Int) {
         
-        let quizSetName = quizDataExcelBrain.quizDataSetNameArray[quizSetNumber]
-        let scoreKey = quizSetName + "t"
-        let pointKey = quizSetName + "p"
-        let curretPoint = userDefault.integer(forKey: pointKey)
+        let name = quizNames.quizName[quizSetNumber]  //"quizData1_1"
+        var recode: [Int] = [totalPoints, totalQuizNum, totalTime, 1]
         
-        let allPoints = userDefault.integer(forKey: "QuizX") + totalPoints
-        userDefault.set(allPoints, forKey: "QuizX")
-        
-        if totalPoints >= curretPoint {
-            let score = "\(totalPoints) / \(totalQuizNum)"
-                   userDefault.set(score, forKey: quizSetName)
-                   userDefault.set(totalTime, forKey: scoreKey)
-                   userDefault.set(totalPoints, forKey: pointKey)
+        if let data = userDefault.array(forKey: name) as? [Int] {
+            recode[3] = data[3] + 1
+            if data[0] > totalPoints {
+                recode[0] = data[0]
+                recode[2] = data[2]
+            } else if data[0] == totalPoints {
+                if data[2] < totalTime {
+                recode[2] = data[2]
+                }
+            }
+            userDefault.set(recode, forKey: name)
+        } else {
+            userDefault.set(recode, forKey: name)
         }
+        
     }
 }

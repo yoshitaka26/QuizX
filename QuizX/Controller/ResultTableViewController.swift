@@ -10,8 +10,11 @@ import UIKit
 
 class ResultTableViewController: UITableViewController {
     
+    var quizNamesArray: [String] = []
+    
     let quizDataBrain = QuizDataExcelBrain()
     let userDefault = UserDefaults.standard
+    let quizNames = QuizName()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,22 +27,22 @@ class ResultTableViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return quizDataBrain.quizDataSetNameArray.count
+        return quizNamesArray.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath) as! ResultCell
-        let quizSetName = quizDataBrain.quizDataSetNameArray[indexPath.row]
+        let quizSetName = quizNamesArray[indexPath.row]
         
         cell.quizSetNameLabel.text = quizSetName
         
-        if let score = userDefault.string(forKey: quizSetName) {
-            cell.quizScoreResultLabel.text = "スコア " + score
+        let name = quizNames.quizName[indexPath.row]
+        
+        if let data = userDefault.array(forKey: name) as? [Int] {
+            cell.quizScoreResultLabel.text = "スコア \(data[0]) / \(data[1])\nタイム \(data[2])秒\nトライ \(data[3])回"
         }
-        let time = userDefault.integer(forKey: quizSetName + "t")
-        cell.quizScoreResultLabel.text?.append(contentsOf: "                   タイム \(time)秒")
-       
+        
         return cell
     }
 

@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import Firebase
 
 class WelcomViewCntroller: UIViewController {
+    
+    let db = Firestore.firestore()
+    var quizDataFSBrain = QuizDataFSBrain()
+    var quizNamesArray: [String] = []
+    
+    
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var quizButton: UIButton!
     @IBOutlet weak var mainLabel: UILabel!
@@ -23,6 +30,9 @@ class WelcomViewCntroller: UIViewController {
         scoreButton.setTitle("成績一覧", for: .normal)
         scoreLabel.text = "\(userDefault.integer(forKey: "QuizX"))🔔"
         
+        quizDataFSBrain.loadQuizDataNameFromFS { (names) in
+                   self.quizNamesArray.append(contentsOf: names)
+               }
     }
     
     
@@ -34,4 +44,19 @@ class WelcomViewCntroller: UIViewController {
         performSegue(withIdentifier: "ToResultView", sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+          if segue.identifier == "ToQuizList" {
+              let destinationVC = segue.destination as! QuizTableViewController
+              
+              destinationVC.quizNamesArray.append(contentsOf: quizNamesArray)
+          }
+          else if segue.identifier == "ToResultView" {
+            let destinationVC = segue.destination as! ResultTableViewController
+            
+            destinationVC.quizNamesArray.append(contentsOf: quizNamesArray)
+        }
+      }
 }
+
+
+

@@ -11,11 +11,11 @@ import UIKit
 
 class ResultViewController: UIViewController {
     
-    
     @IBOutlet weak var returnButton: UIButton!
     
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    
     var totalPoints: Int = 0
     var totalQuizNum: Int = 0
     var quizSetNumber: Int = 0
@@ -23,8 +23,6 @@ class ResultViewController: UIViewController {
     let scoreBrain = ScoreBrain()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
         
         self.navigationItem.hidesBackButton = true
         
@@ -37,6 +35,6 @@ class ResultViewController: UIViewController {
     }
     
     @IBAction func returnButtonPressed(_ sender: UIButton) {
-        navigationController?.popToRootViewController(animated: true)
+        
     }
 }
