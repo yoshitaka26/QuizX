@@ -12,11 +12,17 @@ import Firebase
 class QuizViewController: UIViewController {
     
     let db = Firestore.firestore()
-    var quizSetArray: [QuizSet] = []
     let quizDataFSBrain = QuizDataFSBrain()
-    var quizSetFileName: String = ""
-    var quizSetNumber: Int = 0
-    var quizQNumber: Int = 0
+    
+    
+    var quizSetArray: [QuizSet] = [] //{QuiData x 10...}
+    var quizSetName: String? = "" //初級クイズ１...
+    var quizSetNumber: Int = 0 //indexPath.row
+    var quizQNumber: Int = 0 //0,10,20 ...
+    var quizEndQNumber: Int = 0 //10,20,30...
+    var totalQuizNum: Int = 10
+    var lifePoints = 3
+    
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
@@ -29,6 +35,10 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var timeProgressBar: UIProgressView!
     @IBOutlet weak var timeLabel: UILabel!
     
+    @IBOutlet weak var lifeImage1: UIImageView!
+    @IBOutlet weak var lifeImage2: UIImageView!
+    @IBOutlet weak var lifeImage3: UIImageView!
+    
     var timer = Timer()
     var totalTime: Float = 0
     var secondsPassed: Float = 0
@@ -36,19 +46,20 @@ class QuizViewController: UIViewController {
     
     var correctPoints: Int = 0
     
-    let quizDataExcelBrain = QuizDataExcelBrain()
-//    var quizDataSetLoaded = [QuizDataSet]()
     
     override func viewDidLoad() {
+        answerAButton.isEnabled = false
+        answerBButton.isEnabled = false
+        answerCButton.isEnabled = false
+        answerDButton.isEnabled = false
         
+        lifeImage1.image = UIImage(systemName: "heart")
+        lifeImage2.image = UIImage(systemName: "heart")
+        lifeImage3.image = UIImage(systemName: "heart")
         
-//        if let quizData = quizDataExcelBrain.getQuizDataFromJSONFile(with: quizSetFileName) {
-//            quizDataSetLoaded = quizData
-//            quizUpdate(with: quizData, number: 0)
-////            quizDataFSBrain.recodeQuizDataToFS(quizDataSetLoaded, quizSetFileName)
-//            }
-        
-        quizUpdate(with: quizSetArray, number: 0)
+        totalQuizNum = quizEndQNumber - quizQNumber
+
+        quizUpdate(with: quizSetArray, number: quizQNumber)
         
         self.navigationItem.hidesBackButton = true
         
@@ -70,6 +81,16 @@ class QuizViewController: UIViewController {
                 
             } else {
                 sender.backgroundColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+                lifePoints -= 1
+                if lifePoints == 2 {
+                    lifeImage1.image = UIImage(systemName: "heart.slash")
+                } else if lifePoints == 1 {
+                    lifeImage2.image = UIImage(systemName: "heart.slash")
+                } else if lifePoints == 0 {
+                    lifeImage3.image = UIImage(systemName: "heart.slash")
+                    answeredTime = 0
+                    performSegue(withIdentifier: "ToResultView", sender: self)
+                }
                 resultLabel.text = "不正解"
                 answerLabel.text = quizSetArray[quizQNumber].explication
                 allButtonOff()
@@ -84,7 +105,7 @@ class QuizViewController: UIViewController {
     @IBAction func moveNextButton(_ sender: UIButton) {
         if questionLabel.text == quizSetArray[quizQNumber].question {
             //問題文が全表示されてから次の問題へ進むこと。スクロール表示問題のエラー対策
-            if quizQNumber < quizSetArray.count - 1 {
+            if quizQNumber < quizEndQNumber - 1 {
                 quizQNumber += 1
                 quizUpdate(with: quizSetArray, number: quizQNumber)
             } else {
@@ -98,8 +119,8 @@ class QuizViewController: UIViewController {
             let destinationVC = segue.destination as! ResultViewController
             
             destinationVC.totalPoints = correctPoints
-            destinationVC.quizSetNumber = quizSetNumber
-            destinationVC.totalQuizNum = quizSetArray.count
+            destinationVC.quizSetName = quizSetName
+            destinationVC.totalQuizNum = totalQuizNum
             destinationVC.totalAnswerdtime = answeredTime
         }
     }
@@ -117,14 +138,16 @@ class QuizViewController: UIViewController {
         timeLabel.text = ""
         moveNextButton.setTitle("", for: .normal)
         moveNextButton.isEnabled = false
-        allButtonON()
         
         answerAButton.setTitle(choices[0], for: .normal)
         answerBButton.setTitle(choices[1], for: .normal)
         answerCButton.setTitle(choices[2], for: .normal)
         answerDButton.setTitle(choices[3], for: .normal)
         
-        questionUpdate()
+        questionLabel.text = quizSetArray[quizQNumber].question
+        
+        allButtonON()
+//        questionUpdate()  問題スクロール表示はココを変更
         
     }
     
@@ -168,10 +191,19 @@ class QuizViewController: UIViewController {
     }
     
     func allButtonON() {
-        answerAButton.isEnabled = true
-        answerBButton.isEnabled = true
-        answerCButton.isEnabled = true
-        answerDButton.isEnabled = true
+        if answerAButton.currentTitle != "" {
+            answerAButton.isEnabled = true
+        }
+        if answerBButton.currentTitle != "" {
+            answerBButton.isEnabled = true
+        }
+        if answerCButton.currentTitle != "" {
+            answerCButton.isEnabled = true
+        }
+        if answerDButton.currentTitle != "" {
+            answerDButton.isEnabled = true
+        }
+        
         answerAButton.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
         answerBButton.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
         answerCButton.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)

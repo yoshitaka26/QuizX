@@ -14,10 +14,10 @@ class ResultTableViewController: UITableViewController {
     
     let quizDataBrain = QuizDataExcelBrain()
     let userDefault = UserDefaults.standard
-    let quizNames = QuizName()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         tableView.register(UINib(nibName: "ResultCell", bundle: nil), forCellReuseIdentifier: "resultCell")
 
@@ -34,10 +34,9 @@ class ResultTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath) as! ResultCell
         let quizSetName = quizNamesArray[indexPath.row]
-        
         cell.quizSetNameLabel.text = quizSetName
         
-        let name = quizNames.quizName[indexPath.row]
+        let name = quizSetName
         
         if let data = userDefault.array(forKey: name) as? [Int] {
             cell.quizScoreResultLabel.text = "スコア \(data[0]) / \(data[1])\nタイム \(data[2])秒\nトライ \(data[3])回"

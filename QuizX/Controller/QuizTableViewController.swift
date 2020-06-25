@@ -14,11 +14,9 @@ class QuizTableViewController: UITableViewController {
     let db = Firestore.firestore()
 
     var quizDataFSBrain = QuizDataFSBrain()
-    var quizSetArray: [QuizSet] = []
-    var quizNamesArray: [String] = []
+    var quizNamesArray: [String] = []  //初級クイズ１...
+    var quizSetArray: [QuizSet] = [] //{QuiData x 75...}
     
-    let quizDataBrain = QuizDataExcelBrain()
-    let quizNames: [String] = QuizName().quizName
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +56,7 @@ class QuizTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row != quizDataBrain.quizDataSetNameArray.count {
+        if indexPath.row != quizNamesArray.count {
             
             performSegue(withIdentifier: "ToQuizChallenge", sender: self)
             
@@ -74,18 +72,16 @@ class QuizTableViewController: UITableViewController {
             let destinationVC = segue.destination as! QuizChallengeViewController
             
             if let indexPath = tableView.indexPathForSelectedRow {
-                quizDataFSBrain.loadQuizDataFromFS(with: quizNames[indexPath.row]) { (quizSet) in
-                    self.quizSetArray.append(contentsOf: quizSet)
-                    destinationVC.quizSetArray.append(contentsOf: quizSet)
-                }
-                destinationVC.quizSetFileName = quizNames[indexPath.row]
-                destinationVC.quizSetNumber = indexPath.row
+                //quizData1_1 -> {QuizData x 5.10...}
+                destinationVC.quizSetArray = quizSetArray
+                destinationVC.quizSetName = quizNamesArray[indexPath.row] //初級クイズ１...
+                destinationVC.quizSetNumber = indexPath.row  //{QuizDataSet} -> 0-4...
             }
         }
         else if segue.identifier == "ToResult" {
             let destinationVC = segue.destination as! ResultTableViewController
             
-            destinationVC.quizNamesArray.append(contentsOf: quizNamesArray)
+            destinationVC.quizNamesArray.append(contentsOf: quizNamesArray)  //初級クイズ１...
         }
     }
 }

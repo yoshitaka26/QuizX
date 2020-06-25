@@ -16,15 +16,3 @@ struct QuizSet {
     let explication: String
     let question: String
 }
-
-
-struct QuizName {
-    
-    let quizName: [String] = [
-    "quizData1_1",
-    "quizData1_2",
-    "quizData1_3",
-    "quizData2_1"
-    ]
-    
-}

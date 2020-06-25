@@ -13,11 +13,12 @@ struct QuizDataExcel: Codable {
 }
 
 struct QuizDataSet: Codable {
-    let question: String
+    
     let answer: String
-    let a1: String
-    let a2: String
-    let a3: String
-    let a4: String
-    let correct: String
+    let dummy1: String
+    let dummy2: String
+    let dummy3: String
+    let explication: String
+    let question: String
+    
 }

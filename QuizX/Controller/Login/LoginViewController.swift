@@ -15,19 +15,29 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextfield: UITextField!
     
     override func viewDidLoad() {
-        emailTextfield.text = "1@2.com"
+        emailTextfield.text = "うなぎ"
         passwordTextfield.text = "abcd1234"
     }
     
     @IBAction func logInPressed(_ sender: UIButton) {
-        if let email = emailTextfield.text, let password = passwordTextfield.text {
+        if let userID = emailTextfield.text, let password = passwordTextfield.text {
+            let email = "\(userID)@quizx.com"
             Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
                 if let e = error {
                     print(e)
+                    self.alertForSearchQuiz()
                 } else {
                     self.performSegue(withIdentifier: "LogToWel", sender: self)
                 }
             }
         }
     }
+    
+    func alertForSearchQuiz() {
+           
+           let alert = UIAlertController(title: "ログインに失敗しました", message: "", preferredStyle: .alert)
+           alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+           
+           present(alert, animated: true, completion: nil)
+       }
 }
