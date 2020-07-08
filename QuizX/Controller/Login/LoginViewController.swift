@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func logInPressed(_ sender: UIButton) {
         if let userID = emailTextfield.text, let password = passwordTextfield.text {
-            let email = "\(userID)@quizx.com"
+            let email = "\(userID)@quizx.net"
             Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
                 if let e = error {
                     print(e)

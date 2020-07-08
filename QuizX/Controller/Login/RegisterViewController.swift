@@ -24,7 +24,7 @@ class RegisterViewController: UIViewController {
     
     @IBAction func registerPressed(_ sender: UIButton) {
         if let userID = emailTextfield.text, let password = passwordTextfield.text {
-            let email = "\(userID)@quizx.com"
+            let email = "\(userID)@quizx.net"
             Auth.auth().createUser(withEmail: email, password: password) { (authResults, error) in
                 if let e = error {
                     print(e.localizedDescription)
@@ -62,5 +62,4 @@ class RegisterViewController: UIViewController {
            
            present(alert, animated: true, completion: nil)
        }
-    
 }

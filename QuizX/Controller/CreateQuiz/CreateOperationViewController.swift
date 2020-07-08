@@ -73,7 +73,6 @@ class CreateOperationViewController: UIViewController {
             newQuizArray.append(newQuiz)
             
             recodeNewQuizToFS(newQuiz: newQuiz)
-            
         }
     }
     
@@ -121,10 +120,6 @@ class CreateOperationViewController: UIViewController {
                 print("Document successfully written!")
             }
         }
-        
         performSegue(withIdentifier: "ToCreateQuizMain", sender: self)
-        
     }
-    
-    
 }

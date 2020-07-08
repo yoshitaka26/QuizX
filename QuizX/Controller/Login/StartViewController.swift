@@ -10,9 +10,7 @@ import UIKit
 
 class StartViewController: UIViewController {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    
     override func viewDidLoad() {
-        titleLabel.text = "QuizX"
+        
     }
 }

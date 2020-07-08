@@ -15,6 +15,7 @@ class ShareQuizViewController: UIViewController {
     let db = Firestore.firestore()
     var quizDataFSBrain = QuizDataFSBrain()
     var newQuizArray: [QuizSet] = []
+    var qNum: String = ""
     
     @IBOutlet weak var numberOfQuiz: UILabel!
     @IBOutlet weak var quizName: UILabel!
@@ -48,8 +49,25 @@ class ShareQuizViewController: UIViewController {
         if let quizNumber = Int(quizName.text!) {
             if newQuizArray.count > 9 {
                 if let email = Auth.auth().currentUser?.email {
+                    qNum = String(quizNumber)
                     let qName = email + "_" + String(quizNumber)
                     quizDataFSBrain.recodeNewQuizToFS(quizName: qName, newQuiz: newQuizArray)
+                    
+                    db.collection("myQuiz").addDocument(data: [
+                        "flag": true,
+                        "date": Date().timeIntervalSince1970,
+                        "email": email,
+                        "myQuizName": qName,
+                        "myQuizNum": String(quizNumber),
+                        "totalQuizNum": newQuizArray.count]) { (error) in
+                            if let e = error {
+                                print("There was an issue saving data to firestore. \(e)")
+                            } else {
+                                print("Successfully saved data")
+                            }
+                            
+                    }
+                    
                     alertForCompleteShareQuiz()
                 }
             } else {
@@ -64,7 +82,7 @@ class ShareQuizViewController: UIViewController {
     
     func alertForCompleteShareQuiz() {
         
-        let alert = UIAlertController(title: "クイズがシェアされました", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "クイズ番号『\(qNum)』で\nクイズがシェアされました", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "OK", style: .default) { (action) in
             self.performSegue(withIdentifier: "ToCreateQuizMain", sender: self)

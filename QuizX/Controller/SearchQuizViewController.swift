@@ -10,11 +10,14 @@ import UIKit
 import Firebase
 
 class SearchQuizViewCntroller: UIViewController {
+    
     let db = Firestore.firestore()
     var quizDataFSBrain = QuizDataFSBrain()
     var quizSetArray: [QuizSet] = []
     var readyQuizFlag = false
-    
+    var newQuizName = ""
+    var myQuizNum = ""
+    var myQuizEmail = ""
     
     var timer = Timer()
     
@@ -26,11 +29,13 @@ class SearchQuizViewCntroller: UIViewController {
     @IBAction func searchQuizbutton(_ sender: UIButton) {
         
         if let userID = addressField.text, let quizNumber = quizNameField.text {
-            let email = "\(userID)@quizx.com"
-            let newQuizName = email + "_" + quizNumber
+            let email = "\(userID)@quizx.net"
+            newQuizName = email + "_" + quizNumber
             
             if userID != "", quizNumber != "" {
                 searchButton.isEnabled = false
+                myQuizNum = quizNumber
+                myQuizEmail = email
                 getDataDromFS(newQuizName)
             } else {
                 alertForSearchQuiz()
@@ -69,7 +74,6 @@ class SearchQuizViewCntroller: UIViewController {
                         self.alertForSearchQuiz()
                     }
                 }
-                
             }
         }
     }
@@ -81,7 +85,10 @@ class SearchQuizViewCntroller: UIViewController {
             destinationVC.quizSetArray.append(contentsOf: quizSetArray)
             
             destinationVC.quizShuffle = true
-            
+            destinationVC.myQuiz = true
+            destinationVC.myQuizName = newQuizName
+            destinationVC.myQUizNum = myQuizNum
+            destinationVC.myQuizEmail = myQuizEmail
         }
     }
     

@@ -142,8 +142,6 @@ class changeNewQuizViewController: UIViewController {
                 print("Document successfully written!")
             }
         }
-        
-        
     }
     
     func deleteNewQuizFromFS() {
@@ -156,8 +154,6 @@ class changeNewQuizViewController: UIViewController {
                 }
             }
         }
-        
-        
     }
     
     
@@ -168,6 +164,5 @@ class changeNewQuizViewController: UIViewController {
             destinationVC.newQuizArray.append(contentsOf: newQuizArray)
         }
     }
-    
 }
 

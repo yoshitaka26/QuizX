@@ -13,12 +13,16 @@ class ResultCell: UITableViewCell {
     @IBOutlet weak var resultView: UIView!
     @IBOutlet weak var resultImage: UIImageView!
     
-    @IBOutlet weak var quizScoreResultLabel: UILabel!
-    @IBOutlet weak var quizSetNameLabel: UILabel!
+  
+    @IBOutlet weak var tryLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var quizName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        resultView.layer.cornerRadius = resultView.frame.height / 5
+        resultView.layer.cornerRadius = resultView.frame.height / 10
         
     }
 

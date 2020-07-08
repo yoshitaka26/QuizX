@@ -18,6 +18,8 @@ class CreateQuizMainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        newQuizArray = []
+        
         if let email = Auth.auth().currentUser?.email {
             quizDataFSBrain.loadQuizDataFromFS(with: email) { (quizSet) in
                 self.newQuizArray.append(contentsOf: quizSet)
@@ -33,9 +35,7 @@ class CreateQuizMainViewController: UIViewController {
     
     
     @IBAction func createNewQuizButton(_ sender: UIButton) {
-        
         performSegue(withIdentifier: "ToCreateOperation", sender: self)
-        
     }
     
     @IBAction func changeNewQuizButton(_ sender: UIButton) {
@@ -49,16 +49,12 @@ class CreateQuizMainViewController: UIViewController {
         } else {
             performSegue(withIdentifier: "ToQuizView", sender: self)
         }
-        
-        
     }
-    
     
     @IBAction func shareQuizButton(_ sender: UIButton) {
         performSegue(withIdentifier: "ToQuizShare", sender: self)
     }
-    @IBAction func backToWelcomeViewButton(_ sender: UIBarButtonItem) {
-    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToCreateOperation" {
@@ -75,9 +71,10 @@ class CreateQuizMainViewController: UIViewController {
             newQuizArray.shuffle()
             
             destinationVC.quizSetArray.append(contentsOf: newQuizArray)
-            destinationVC.quizSetName = "Myクイズ"
+            destinationVC.quizSetName = nil
             destinationVC.quizQNumber = 0
             destinationVC.quizEndQNumber = newQuizArray.count
+            destinationVC.navigationItem.hidesBackButton = false
         } else if segue.identifier == "ToQuizShare" {
             let destinationVC = segue.destination as! ShareQuizViewController
             
@@ -85,6 +82,8 @@ class CreateQuizMainViewController: UIViewController {
         }
     }
     
+    
+    //MARK: - Alert
     func alertForNoQuiz() {
         
         let alert = UIAlertController(title: "クイズがありません", message: "", preferredStyle: .alert)

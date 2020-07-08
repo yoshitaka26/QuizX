@@ -12,29 +12,28 @@ struct ScoreBrain {
     
     let userDefault = UserDefaults.standard
     
-    func scoreRecord(_ totalPoints: Int, _ totalQuizNum: Int, _ quizSetName: String?, _ totalTime: Int) {
+    func scoreRecord(_ totalPoints: Int, _ totalQuizNum: Int, _ scoreName: String, _ totalTime: Int) {
         
-        //初級クイズ１...
-        if let name = quizSetName {
-            var recode: [Int] = [totalPoints, totalQuizNum, totalTime, 1]
+        var recode: [Int] = [totalPoints, totalQuizNum, totalTime, 1]
+        
+        if let data = userDefault.array(forKey: scoreName) as? [Int] {
             
-            if let data = userDefault.array(forKey: name) as? [Int] {
-                
-                recode[3] = data[3] + 1
+            recode[3] = data[3] + 1
+            
+            if totalTime != 0 {
                 if data[0] > totalPoints {
                     recode[0] = data[0]
                     recode[2] = data[2]
                 } else if data[0] == totalPoints {
                     if data[2] < totalTime {
-                    recode[2] = data[2]
+                        recode[2] = data[2]
                     }
                 }
-                userDefault.set(recode, forKey: name)
-            } else {
-                userDefault.set(recode, forKey: name)
             }
+            
+            userDefault.set(recode, forKey: scoreName)
         } else {
-            print("Did not record the score")
+            userDefault.set(recode, forKey: scoreName)
         }
     }
 }

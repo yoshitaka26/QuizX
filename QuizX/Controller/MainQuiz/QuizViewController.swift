@@ -12,14 +12,12 @@ import Firebase
 class QuizViewController: UIViewController {
     
     let db = Firestore.firestore()
-    let quizDataFSBrain = QuizDataFSBrain()
     
-    
-    var quizSetArray: [QuizSet] = [] //{QuiData x 10...}
-    var quizSetName: String? = "" //初級クイズ１...
+    var quizSetArray: [QuizSet] = []
+    var quizSetName: String? = nil //初級クイズ１...
     var quizSetNumber: Int = 0 //indexPath.row
-    var quizQNumber: Int = 0 //0,10,20 ...
-    var quizEndQNumber: Int = 0 //10,20,30...
+    var quizQNumber: Int = 0
+    var quizEndQNumber: Int = 0
     var totalQuizNum: Int = 10
     var lifePoints = 3
     
@@ -46,6 +44,11 @@ class QuizViewController: UIViewController {
     
     var correctPoints: Int = 0
     
+    var myQuiz: Bool = false
+    var myQuizName: String? = nil
+    var myQUizNum: String? = nil
+    var myQuizEmail: String? = nil
+    
     
     override func viewDidLoad() {
         answerAButton.isEnabled = false
@@ -58,10 +61,8 @@ class QuizViewController: UIViewController {
         lifeImage3.image = UIImage(systemName: "heart")
         
         totalQuizNum = quizEndQNumber - quizQNumber
-
-        quizUpdate(with: quizSetArray, number: quizQNumber)
         
-        self.navigationItem.hidesBackButton = true
+        quizUpdate(with: quizSetArray, number: quizQNumber)
         
         moveNextButton.isEnabled = false
         
@@ -122,6 +123,11 @@ class QuizViewController: UIViewController {
             destinationVC.quizSetName = quizSetName
             destinationVC.totalQuizNum = totalQuizNum
             destinationVC.totalAnswerdtime = answeredTime
+            if myQuiz {
+                destinationVC.myQuizName = myQuizName
+                destinationVC.myQUizNum = myQUizNum
+                destinationVC.myQuizEmail = myQuizEmail
+            }
         }
     }
     
@@ -147,36 +153,9 @@ class QuizViewController: UIViewController {
         questionLabel.text = quizSetArray[quizQNumber].question
         
         allButtonON()
-//        questionUpdate()  問題スクロール表示はココを変更
+        //        questionUpdate()  問題スクロール表示はココを変更
         
     }
-    
-    
-    func questionUpdate()  {
-        switch quizSetNumber {
-        case 3:
-            questionLabel.text = ""
-            questionLabel.textAlignment = .left
-            
-            let questionText = quizSetArray[quizQNumber].question
-            
-            var charIndex = 0.0
-            
-            for letter in questionText {
-                
-                Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { (timer) in
-                    DispatchQueue.main.async {
-                        self.questionLabel.text?.append(letter)
-                    }
-                }
-                charIndex += 1
-            }
-        default:
-            questionLabel.text = quizSetArray[quizQNumber].question
-        }
-    }
-    
-    
     
     
     //MARK: - Buttons
@@ -213,7 +192,7 @@ class QuizViewController: UIViewController {
     }
     
     
-//MARK: - Timer
+    //MARK: - Timer
     
     func setTimer() {
         timer.invalidate()
@@ -239,5 +218,28 @@ class QuizViewController: UIViewController {
             moveNextButton.setTitle("次へ", for: .normal)
         }
     }
+    
+    
+    //MARK: - Question Scroll  問題スクロール表示
+    
+    func questionUpdate()  {
+        questionLabel.text = ""
+        questionLabel.textAlignment = .left
+        
+        let questionText = quizSetArray[quizQNumber].question
+        
+        var charIndex = 0.0
+        
+        for letter in questionText {
+            
+            Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { (timer) in
+                DispatchQueue.main.async {
+                    self.questionLabel.text?.append(letter)
+                }
+            }
+            charIndex += 1
+        }
+    }
+    
 }
 
