@@ -92,6 +92,4 @@ class CreateQuizMainViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
-    
-    
 }

@@ -44,19 +44,15 @@ class QuizSelectViewController: UIViewController {
             let destinationVC = segue.destination as! QuizTableViewController
             
             destinationVC.quizDataName = K.QName.intermediate
-            
         }
         else if segue.identifier == "ToAdvQuizList" {
             let destinationVC = segue.destination as! QuizTableViewController
             
             destinationVC.quizDataName = K.QName.advanced
-            
         } else if segue.identifier == "ToChallengeQuiz" {
             let destinationVC = segue.destination as! QuizChallengeViewController
 
-            
             destinationVC.quizShuffle = true
-            
         }
     }
 }

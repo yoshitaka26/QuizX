@@ -69,6 +69,5 @@ class ChangeMyQuizViewController: UIViewController {
             destinationVC.myQuizName = myQuizName
             destinationVC.navigationItem.hidesBackButton = true
         }
-        
     }
 }

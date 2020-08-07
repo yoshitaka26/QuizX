@@ -18,8 +18,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordTextfield: UITextField!
     
     override func viewDidLoad() {
-        emailTextfield.text = "うなぎ"
-        passwordTextfield.text = "abcd1234"
+        emailTextfield.text = ""
+        passwordTextfield.text = ""
     }
     
     @IBAction func registerPressed(_ sender: UIButton) {

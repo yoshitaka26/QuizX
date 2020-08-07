@@ -40,14 +40,12 @@ class SharedMyQuizChangeTableViewController: UITableViewController {
                                         
                                     }
                                 }
-                                
                             }
                         }
                     }
                 }
             }
         }
-        
     }
     
     // MARK: - Table view data source
@@ -85,9 +83,7 @@ class SharedMyQuizChangeTableViewController: UITableViewController {
             
             if let indexPath = tableView.indexPathForSelectedRow {
                 destinationVC.myQuizName = myQuiz[indexPath.row].myQuizName
+            }
         }
-        
     }
-    }
-    
 }
