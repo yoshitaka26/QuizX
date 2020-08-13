@@ -21,7 +21,6 @@
 		E43C07E7247FE5AA001E29AC /* CreateOperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C07E6247FE5AA001E29AC /* CreateOperationViewController.swift */; };
 		E43CF201247491C900589B6C /* QuizDataFS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43CF200247491C900589B6C /* QuizDataFS.swift */; };
 		E43F042E24712BA6003B8606 /* scoreBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43F042D24712BA6003B8606 /* scoreBrain.swift */; };
-		E43F0430247176E4003B8606 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E43F042F247176E4003B8606 /* GoogleService-Info.plist */; };
 		E43F0432247188EF003B8606 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43F0431247188EF003B8606 /* StartViewController.swift */; };
 		E43F04342471891B003B8606 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43F04332471891B003B8606 /* RegisterViewController.swift */; };
 		E43F043624718935003B8606 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43F043524718935003B8606 /* LoginViewController.swift */; };
@@ -31,6 +30,7 @@
 		E444D9AE24813616004684D0 /* NewQuizTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E444D9AD24813616004684D0 /* NewQuizTableViewController.swift */; };
 		E444D9B0248148BC004684D0 /* changeNewQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E444D9AF248148BC004684D0 /* changeNewQuizViewController.swift */; };
 		E4584156247AB43E00A3EAFE /* QuizSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4584155247AB43E00A3EAFE /* QuizSelectViewController.swift */; };
+		E45DF19724E4CAEC00038A50 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E45DF19624E4CAEC00038A50 /* GoogleService-Info.plist */; };
 		E4667C8624766AD3001A972E /* QuizDataFSBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4667C8524766AD3001A972E /* QuizDataFSBrain.swift */; };
 		E4667C8824771DD8001A972E /* QuizChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4667C8724771DD8001A972E /* QuizChallengeViewController.swift */; };
 		E47A7673248FA0D800500184 /* ShareQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47A7672248FA0D800500184 /* ShareQuizViewController.swift */; };
@@ -68,7 +68,6 @@
 		E43C07E6247FE5AA001E29AC /* CreateOperationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOperationViewController.swift; sourceTree = "<group>"; };
 		E43CF200247491C900589B6C /* QuizDataFS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDataFS.swift; sourceTree = "<group>"; };
 		E43F042D24712BA6003B8606 /* scoreBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scoreBrain.swift; sourceTree = "<group>"; };
-		E43F042F247176E4003B8606 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E43F0431247188EF003B8606 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		E43F04332471891B003B8606 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E43F043524718935003B8606 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +77,7 @@
 		E444D9AD24813616004684D0 /* NewQuizTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewQuizTableViewController.swift; sourceTree = "<group>"; };
 		E444D9AF248148BC004684D0 /* changeNewQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changeNewQuizViewController.swift; sourceTree = "<group>"; };
 		E4584155247AB43E00A3EAFE /* QuizSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizSelectViewController.swift; sourceTree = "<group>"; };
+		E45DF19624E4CAEC00038A50 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E4667C8524766AD3001A972E /* QuizDataFSBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizDataFSBrain.swift; sourceTree = "<group>"; };
 		E4667C8724771DD8001A972E /* QuizChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizChallengeViewController.swift; sourceTree = "<group>"; };
 		E47A7672248FA0D800500184 /* ShareQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareQuizViewController.swift; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 				E40B1D9C246825A800CB8C3F /* Assets.xcassets */,
 				E40B1D9E246825A800CB8C3F /* LaunchScreen.storyboard */,
 				E40B1DA1246825A800CB8C3F /* Info.plist */,
-				E43F042F247176E4003B8606 /* GoogleService-Info.plist */,
+				E45DF19624E4CAEC00038A50 /* GoogleService-Info.plist */,
 				E4FB439E24B2842A00975C0D /* Constants.swift */,
 			);
 			path = QuizX;
@@ -323,8 +323,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E49A70502479C8F600929251 /* quizDataBeginner.json in Resources */,
+				E45DF19724E4CAEC00038A50 /* GoogleService-Info.plist in Resources */,
 				E40B1DA0246825A800CB8C3F /* LaunchScreen.storyboard in Resources */,
-				E43F0430247176E4003B8606 /* GoogleService-Info.plist in Resources */,
 				E43F569F246EAC4F00AA1024 /* ResultCell.xib in Resources */,
 				E49A70522479C8FD00929251 /* quizDataIntermediate.json in Resources */,
 				E49A70542479C90400929251 /* quizDataAdvanced.json in Resources */,
