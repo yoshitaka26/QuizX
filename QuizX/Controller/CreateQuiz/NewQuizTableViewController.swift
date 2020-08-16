@@ -81,4 +81,3 @@ class NewQuizTableViewController: UITableViewController {
         }
     }
 }
-
