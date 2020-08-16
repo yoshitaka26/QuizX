@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		E40B1DA0246825A800CB8C3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E40B1D9E246825A800CB8C3F /* LaunchScreen.storyboard */; };
 		E40B1DAF2468880400CB8C3F /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B1DAE2468880400CB8C3F /* ResultViewController.swift */; };
 		E40B1DB12468AD2800CB8C3F /* QuizTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40B1DB02468AD2800CB8C3F /* QuizTableViewController.swift */; };
+		E42E3E9B24E904CC00C291D1 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E42E3E9A24E904CC00C291D1 /* IQKeyboardManagerSwift */; };
 		E4327C0E2491081E009F87EF /* SearchQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4327C0D2491081E009F87EF /* SearchQuizViewController.swift */; };
 		E43C07E5247FE53F001E29AC /* CreateQuizMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C07E4247FE53F001E29AC /* CreateQuizMainViewController.swift */; };
 		E43C07E7247FE5AA001E29AC /* CreateOperationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43C07E6247FE5AA001E29AC /* CreateOperationViewController.swift */; };
@@ -102,6 +103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3620583879EB3DA40F7B8A0A /* Pods_QuizX.framework in Frameworks */,
+				E42E3E9B24E904CC00C291D1 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +282,9 @@
 			dependencies = (
 			);
 			name = QuizX;
+			packageProductDependencies = (
+				E42E3E9A24E904CC00C291D1 /* IQKeyboardManagerSwift */,
+			);
 			productName = QuizX;
 			productReference = E40B1D90246825A200CB8C3F /* QuizX.app */;
 			productType = "com.apple.product-type.application";
@@ -308,6 +313,9 @@
 				Base,
 			);
 			mainGroup = E40B1D87246825A200CB8C3F;
+			packageReferences = (
+				E42E3E9924E904CC00C291D1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
 			productRefGroup = E40B1D91246825A200CB8C3F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -616,6 +624,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E42E3E9924E904CC00C291D1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E42E3E9A24E904CC00C291D1 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E42E3E9924E904CC00C291D1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E40B1D88246825A200CB8C3F /* Project object */;
 }
