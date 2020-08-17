@@ -13,8 +13,11 @@ class QuizSelectViewController: UIViewController {
     
     let db = Firestore.firestore()
     
+    let quizDataExcelBrain = QuizDataExcelBrain()
+    
     override func viewDidLoad() {
         
+       
     }
     
     
@@ -39,19 +42,22 @@ class QuizSelectViewController: UIViewController {
             let destinationVC = segue.destination as! QuizTableViewController
             
             destinationVC.quizDataName = K.QName.beginner
+            destinationVC.quizNamesArray = quizDataExcelBrain.namesBeginner
         }
         else if segue.identifier == "ToIntQuizList" {
             let destinationVC = segue.destination as! QuizTableViewController
             
             destinationVC.quizDataName = K.QName.intermediate
+            destinationVC.quizNamesArray = quizDataExcelBrain.namesIntermediate
         }
         else if segue.identifier == "ToAdvQuizList" {
             let destinationVC = segue.destination as! QuizTableViewController
             
             destinationVC.quizDataName = K.QName.advanced
+            destinationVC.quizNamesArray = quizDataExcelBrain.namesAdvanced
         } else if segue.identifier == "ToChallengeQuiz" {
             let destinationVC = segue.destination as! QuizChallengeViewController
-
+            
             destinationVC.quizShuffle = true
         }
     }

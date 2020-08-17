@@ -319,10 +319,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="273"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9g-D9-lCr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="91"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="136.5"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9M0-5Y-WcS">
-                                                                <rect key="frame" x="20" y="20" width="374" height="51"/>
+                                                                <rect key="frame" x="20" y="20" width="374" height="96.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                 <state key="normal" title="クイズに挑戦">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -340,11 +340,54 @@
                                                             <constraint firstAttribute="trailing" secondItem="9M0-5Y-WcS" secondAttribute="trailing" constant="20" id="rhM-5y-TcV"/>
                                                         </constraints>
                                                     </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9zJ-qV-dor">
+                                                        <rect key="frame" x="0.0" y="136.5" width="414" height="136.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hes-Tm-Or6">
+                                                                <rect key="frame" x="20" y="20" width="374" height="96.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                                <state key="normal" title="自作クイズに挑戦">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <segue destination="xoE-Lq-0d7" kind="show" id="XbB-Xq-Cxl"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="hes-Tm-Or6" firstAttribute="leading" secondItem="9zJ-qV-dor" secondAttribute="leading" constant="20" id="0Tx-Us-PQu"/>
+                                                            <constraint firstAttribute="bottom" secondItem="hes-Tm-Or6" secondAttribute="bottom" constant="20" id="KqQ-dS-0wa"/>
+                                                            <constraint firstAttribute="trailing" secondItem="hes-Tm-Or6" secondAttribute="trailing" constant="20" id="ZdP-bi-Qtp"/>
+                                                            <constraint firstItem="hes-Tm-Or6" firstAttribute="top" secondItem="9zJ-qV-dor" secondAttribute="top" constant="20" id="at3-kK-bLs"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="L9g-D9-lCr" firstAttribute="leading" secondItem="UMk-7d-p2w" secondAttribute="leading" id="QvB-ev-tde"/>
+                                                    <constraint firstAttribute="trailing" secondItem="L9g-D9-lCr" secondAttribute="trailing" id="Vfm-mR-JIV"/>
+                                                    <constraint firstItem="9zJ-qV-dor" firstAttribute="leading" secondItem="UMk-7d-p2w" secondAttribute="leading" id="jo9-VZ-gmO"/>
+                                                    <constraint firstAttribute="trailing" secondItem="9zJ-qV-dor" secondAttribute="trailing" id="nQ3-Ep-m3w"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="UMk-7d-p2w" firstAttribute="top" secondItem="vC7-Uz-efM" secondAttribute="top" id="2Fn-VU-SmI"/>
+                                            <constraint firstItem="UMk-7d-p2w" firstAttribute="leading" secondItem="vC7-Uz-efM" secondAttribute="leading" id="f2h-t9-3gi"/>
+                                            <constraint firstAttribute="trailing" secondItem="UMk-7d-p2w" secondAttribute="trailing" id="f6z-xt-WW2"/>
+                                            <constraint firstAttribute="bottom" secondItem="UMk-7d-p2w" secondAttribute="bottom" id="nhi-rb-N09"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uBA-GE-yf4" userLabel="Bottom View">
+                                        <rect key="frame" x="0.0" y="545.5" width="414" height="272.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3FR-Ef-YOo">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="272.5"/>
+                                                <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kVe-bs-WKy">
-                                                        <rect key="frame" x="0.0" y="91" width="414" height="91"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="136"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIr-em-0gI">
-                                                                <rect key="frame" x="20" y="20" width="374" height="51"/>
+                                                                <rect key="frame" x="20" y="20" width="374" height="96"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                 <state key="normal" title="クイズを作る">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -363,10 +406,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cc0-gK-s1F">
-                                                        <rect key="frame" x="0.0" y="182" width="414" height="91"/>
+                                                        <rect key="frame" x="0.0" y="136" width="414" height="136.5"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OWi-Qg-Pdu">
-                                                                <rect key="frame" x="20" y="20" width="374" height="51"/>
+                                                                <rect key="frame" x="20" y="20" width="374" height="96.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                 <state key="normal" title="Myクイズ一覧">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -385,40 +428,13 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="kVe-bs-WKy" firstAttribute="leading" secondItem="UMk-7d-p2w" secondAttribute="leading" id="MLU-Ew-b3q"/>
-                                                    <constraint firstItem="L9g-D9-lCr" firstAttribute="leading" secondItem="UMk-7d-p2w" secondAttribute="leading" id="QvB-ev-tde"/>
-                                                    <constraint firstAttribute="trailing" secondItem="L9g-D9-lCr" secondAttribute="trailing" id="Vfm-mR-JIV"/>
-                                                    <constraint firstAttribute="trailing" secondItem="kVe-bs-WKy" secondAttribute="trailing" id="iCe-Ti-z8B"/>
-                                                    <constraint firstItem="Cc0-gK-s1F" firstAttribute="leading" secondItem="UMk-7d-p2w" secondAttribute="leading" id="mDH-KV-9a7"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Cc0-gK-s1F" secondAttribute="trailing" id="xwZ-DS-aMu"/>
-                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="UMk-7d-p2w" firstAttribute="top" secondItem="vC7-Uz-efM" secondAttribute="top" id="2Fn-VU-SmI"/>
-                                            <constraint firstItem="UMk-7d-p2w" firstAttribute="leading" secondItem="vC7-Uz-efM" secondAttribute="leading" id="f2h-t9-3gi"/>
-                                            <constraint firstAttribute="trailing" secondItem="UMk-7d-p2w" secondAttribute="trailing" id="f6z-xt-WW2"/>
-                                            <constraint firstAttribute="bottom" secondItem="UMk-7d-p2w" secondAttribute="bottom" id="nhi-rb-N09"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uBA-GE-yf4" userLabel="Bottom View">
-                                        <rect key="frame" x="0.0" y="545.5" width="414" height="272.5"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hes-Tm-Or6">
-                                                <rect key="frame" x="117.5" y="116.5" width="179" height="39"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <state key="normal" title="共有クイズに挑戦">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="xoE-Lq-0d7" kind="show" id="XbB-Xq-Cxl"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="hes-Tm-Or6" firstAttribute="centerY" secondItem="uBA-GE-yf4" secondAttribute="centerY" id="ECM-4e-B94"/>
-                                            <constraint firstItem="hes-Tm-Or6" firstAttribute="centerX" secondItem="uBA-GE-yf4" secondAttribute="centerX" id="wp1-Ao-M7Z"/>
+                                            <constraint firstAttribute="bottom" secondItem="3FR-Ef-YOo" secondAttribute="bottom" id="0Td-9e-QCN"/>
+                                            <constraint firstItem="3FR-Ef-YOo" firstAttribute="leading" secondItem="uBA-GE-yf4" secondAttribute="leading" id="2ea-pK-ub1"/>
+                                            <constraint firstAttribute="trailing" secondItem="3FR-Ef-YOo" secondAttribute="trailing" id="7cv-6K-Udb"/>
+                                            <constraint firstItem="3FR-Ef-YOo" firstAttribute="top" secondItem="uBA-GE-yf4" secondAttribute="top" id="KKO-xT-Ffg"/>
                                         </constraints>
                                     </view>
                                 </subviews>

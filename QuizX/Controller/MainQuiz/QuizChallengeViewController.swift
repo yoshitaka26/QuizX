@@ -11,8 +11,8 @@ import Firebase
 
 class QuizChallengeViewController: UIViewController {
     
-    let db = Firestore.firestore()
-    var quizDataFSBrain = QuizDataFSBrain()
+    //    let db = Firestore.firestore()
+    //    var quizDataFSBrain = QuizDataFSBrain()
     
     var quizData: String? = nil
     var quizSetName: String = ""  //初級クイズ１...
@@ -25,23 +25,33 @@ class QuizChallengeViewController: UIViewController {
     var myQUizNum: String? = nil
     var myQuizEmail: String? = nil
     
+    let quizDataExcelBrain = QuizDataExcelBrain()
+    
     @IBOutlet weak var QuizChallengeButton: UIButton!
     
     override func viewDidLoad() {
         if let name = quizData {
-            quizDataFSBrain.loadQuizDataFromFS(with: name) { (quizSet) in
-                self.quizSetArray.append(contentsOf: quizSet)
+            if let qData = quizDataExcelBrain.getQuizDataFromJSONFile(with: name) {
+                quizSetArray.append(contentsOf: qData)
             }
+            //            quizDataFSBrain.loadQuizDataFromFS(with: name) { (quizSet) in
+            //                self.quizSetArray.append(contentsOf: quizSet)
+            //            }
         } else {
-            quizDataFSBrain.loadQuizDataFromFS(with: K.QData.beginner) { (quizSet) in
-                self.quizSetArray.append(contentsOf: quizSet)
+            if let qDataBeg = quizDataExcelBrain.getQuizDataFromJSONFile(with: K.QData.beginner), let qDataInt = quizDataExcelBrain.getQuizDataFromJSONFile(with: K.QData.intermediate), let qDataAdv = quizDataExcelBrain.getQuizDataFromJSONFile(with: K.QData.advanced) {
+                quizSetArray.append(contentsOf: qDataBeg)
+                quizSetArray.append(contentsOf: qDataInt)
+                quizSetArray.append(contentsOf: qDataAdv)
             }
-            quizDataFSBrain.loadQuizDataFromFS(with: K.QData.intermediate) { (quizSet) in
-                self.quizSetArray.append(contentsOf: quizSet)
-            }
-            quizDataFSBrain.loadQuizDataFromFS(with: K.QData.advanced) { (quizSet) in
-                self.quizSetArray.append(contentsOf: quizSet)
-            }
+            //            quizDataFSBrain.loadQuizDataFromFS(with: K.QData.beginner) { (quizSet) in
+            //                self.quizSetArray.append(contentsOf: quizSet)
+            //            }
+            //            quizDataFSBrain.loadQuizDataFromFS(with: K.QData.intermediate) { (quizSet) in
+            //                self.quizSetArray.append(contentsOf: quizSet)
+            //            }
+            //            quizDataFSBrain.loadQuizDataFromFS(with: K.QData.advanced) { (quizSet) in
+            //                self.quizSetArray.append(contentsOf: quizSet)
+            //            }
         }
     }
     

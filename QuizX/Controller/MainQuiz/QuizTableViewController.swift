@@ -20,10 +20,10 @@ class QuizTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let name =  quizDataName {
-            fetchQuizNameFromFS(quizDataName: name)
-        }
+
+//        if let name =  quizDataName {
+//            fetchQuizNameFromFS(quizDataName: name)
+//        }
         
         tableView.register(UINib(nibName: "ResultCell", bundle: nil), forCellReuseIdentifier: "resultCell")
     }
