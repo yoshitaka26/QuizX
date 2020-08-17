@@ -14,7 +14,6 @@ class QuizSelectViewController: UIViewController {
     let db = Firestore.firestore()
     
     let quizDataExcelBrain = QuizDataExcelBrain()
-    var quizDataSetLoaded = [QuizDataSet]()
     
     override func viewDidLoad() {
         
