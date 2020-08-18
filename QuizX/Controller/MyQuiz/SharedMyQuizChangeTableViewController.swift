@@ -60,11 +60,9 @@ class SharedMyQuizChangeTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath) as! ResultCell
         
         let data = myQuiz[indexPath.row]
-        let date = data.date
-        let roundDate = Int64((date * 1000.0).rounded())
-        let triedDate = Date(milliseconds: Int64(roundDate))
+        
         cell.quizName.text = "クイズ番号　\(data.myQuizNum)"
-        cell.scoreLabel.text = "作成日　\(triedDate)"
+        cell.scoreLabel.text = ""
         cell.timeLabel.text = "問題数　\(data.totalQuizNum)問"
         cell.tryLabel.text = ""
         

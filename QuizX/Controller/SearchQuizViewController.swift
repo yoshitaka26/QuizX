@@ -19,6 +19,8 @@ class SearchQuizViewCntroller: UIViewController {
     var myQuizNum = ""
     var myQuizEmail = ""
     
+    var iD = ""
+    
     var timer = Timer()
     
     @IBOutlet weak var addressField: UITextField!
@@ -29,6 +31,7 @@ class SearchQuizViewCntroller: UIViewController {
     @IBAction func searchQuizbutton(_ sender: UIButton) {
         
         if let userID = addressField.text, let quizNumber = quizNameField.text {
+            iD = userID
             let email = "\(userID)@quizx.net"
             newQuizName = email + "_" + quizNumber
             
@@ -64,7 +67,7 @@ class SearchQuizViewCntroller: UIViewController {
                     }
                 }
                 
-                Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
+                Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
                     
                     if self.readyQuizFlag == true {
                         self.performSegue(withIdentifier: "ToShareQuizChallenge", sender: self)
@@ -83,12 +86,12 @@ class SearchQuizViewCntroller: UIViewController {
             let destinationVC = segue.destination as! QuizChallengeViewController
             
             destinationVC.quizSetArray.append(contentsOf: quizSetArray)
-            
-            destinationVC.quizShuffle = true
+            destinationVC.quizShuffle = false
             destinationVC.myQuiz = true
             destinationVC.myQuizName = newQuizName
             destinationVC.myQUizNum = myQuizNum
             destinationVC.myQuizEmail = myQuizEmail
+            destinationVC.userID = iD
         }
     }
     

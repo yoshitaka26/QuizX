@@ -65,6 +65,7 @@ class SharedMyQuizTableViewController: UITableViewController {
         let date = data.date
         let roundDate = Int64((date * 1000.0).rounded())
         let triedDate = Date(milliseconds: Int64(roundDate))
+        
         cell.quizName.text = "\(data.myQuizNum)"
         cell.scoreLabel.text = "スコア \(data.totalpoints) / \(data.totalQuizNum)"
         cell.timeLabel.text = data.playerEmail
