@@ -1781,30 +1781,20 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rtM-Cz-Zni">
                                                         <rect key="frame" x="0.0" y="119.5" width="374" height="110"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQl-ee-Pzb">
-                                                                <rect key="frame" x="352.5" y="0.0" width="21.5" height="22"/>
-                                                                <state key="normal" image="plus" catalog="system">
-                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="changeQuizNameButton:" destination="Y5X-cd-Myd" eventType="touchUpInside" id="ujV-wY-lEU"/>
-                                                                </connections>
-                                                            </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xav-mz-3oD">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0以外から始まる数字...例)1234" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N6g-Id-4Ul">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="110"/>
-                                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                            </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="xav-mz-3oD" secondAttribute="trailing" id="10P-k5-Pgx"/>
-                                                            <constraint firstItem="FQl-ee-Pzb" firstAttribute="top" secondItem="rtM-Cz-Zni" secondAttribute="top" id="GBC-AM-wGc"/>
-                                                            <constraint firstAttribute="trailing" secondItem="FQl-ee-Pzb" secondAttribute="trailing" id="PeL-yA-yrD"/>
-                                                            <constraint firstItem="xav-mz-3oD" firstAttribute="leading" secondItem="rtM-Cz-Zni" secondAttribute="leading" id="SJz-LS-64b"/>
-                                                            <constraint firstAttribute="bottom" secondItem="xav-mz-3oD" secondAttribute="bottom" id="iH2-jk-srZ"/>
-                                                            <constraint firstItem="xav-mz-3oD" firstAttribute="top" secondItem="rtM-Cz-Zni" secondAttribute="top" id="tHk-Y6-RUH"/>
+                                                            <constraint firstAttribute="trailing" secondItem="N6g-Id-4Ul" secondAttribute="trailing" id="Ovh-Te-LEf"/>
+                                                            <constraint firstItem="N6g-Id-4Ul" firstAttribute="leading" secondItem="rtM-Cz-Zni" secondAttribute="leading" id="fX7-5W-LQ9"/>
+                                                            <constraint firstItem="N6g-Id-4Ul" firstAttribute="top" secondItem="rtM-Cz-Zni" secondAttribute="top" id="lJC-KN-rCv"/>
+                                                            <constraint firstAttribute="bottom" secondItem="N6g-Id-4Ul" secondAttribute="bottom" id="vKr-Rm-Zq8"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -1889,7 +1879,7 @@
                     <navigationItem key="navigationItem" id="BAr-By-lRq"/>
                     <connections>
                         <outlet property="numberOfQuiz" destination="BbO-U5-65G" id="zDn-kz-fii"/>
-                        <outlet property="quizName" destination="xav-mz-3oD" id="1bb-cs-Cbx"/>
+                        <outlet property="quizNumber" destination="N6g-Id-4Ul" id="dUg-ZG-xgJ"/>
                         <segue destination="xCY-QI-7Ll" kind="show" identifier="ToCreateQuizMain" id="KHu-nH-TOi"/>
                     </connections>
                 </viewController>
@@ -2274,7 +2264,7 @@
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アルファベットの「Ｘ」　何と読む？" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHx-X0-jNb">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHx-X0-jNb">
                                                                 <rect key="frame" x="207" y="0.0" width="207" height="194.5"/>
                                                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -2317,7 +2307,7 @@
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="エックスと読みます" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KmN-Ee-slW">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KmN-Ee-slW">
                                                                 <rect key="frame" x="207" y="0.0" width="207" height="194.5"/>
                                                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -2365,7 +2355,7 @@
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="エックス" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3C-nV-B0v">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3C-nV-B0v">
                                                                 <rect key="frame" x="207" y="0.0" width="207" height="72"/>
                                                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -2408,7 +2398,7 @@
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ゼット" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhS-zi-HmN">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhS-zi-HmN">
                                                                 <rect key="frame" x="207" y="0.0" width="207" height="71.5"/>
                                                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -2451,7 +2441,7 @@
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="エフ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpB-bc-DhO">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UpB-bc-DhO">
                                                                 <rect key="frame" x="207" y="0.0" width="207" height="72"/>
                                                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -2494,7 +2484,7 @@
                                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アール" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAn-P7-AZF">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAn-P7-AZF">
                                                                 <rect key="frame" x="207" y="0.0" width="207" height="71.5"/>
                                                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -2689,7 +2679,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="wwZ-qz-UfY"/>
         <segue reference="xom-Z9-aGh"/>
-        <segue reference="v6S-Dw-kRz"/>
+        <segue reference="KHu-nH-TOi"/>
         <segue reference="mw6-6z-tj2"/>
         <segue reference="jJV-2Q-CCT"/>
         <segue reference="z3c-Hd-4wi"/>

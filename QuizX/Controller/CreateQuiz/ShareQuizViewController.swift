@@ -17,67 +17,45 @@ class ShareQuizViewController: UIViewController {
     var newQuizArray: [QuizSet] = []
     var qNum: String = ""
     
+    @IBOutlet weak var quizNumber: UITextField!
     @IBOutlet weak var numberOfQuiz: UILabel!
-    @IBOutlet weak var quizName: UILabel!
     
     override func viewDidLoad() {
         numberOfQuiz.text = String(newQuizArray.count)
     }
     
-    @IBAction func changeQuizNameButton(_ sender: UIButton) {
-        var textFiled = UITextField()
-        
-        let alert = UIAlertController(title: "クイズ番号", message: "0以外から始まる数字", preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: "追加", style: .default) { (action) in
-            self.quizName.text = textFiled.text!
-        }
-        
-        alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
-        alert.addTextField { (alertTextFiled) in
-            alertTextFiled.placeholder = "1234"
-            
-            textFiled = alertTextFiled
-        }
-        
-        alert.addAction(action)
-        
-        present(alert, animated: true, completion: nil)
-    }
     
     @IBAction func shareQuizButton(_ sender: UIButton) {
-        if let quizNumber = Int(quizName.text!) {
-            if newQuizArray.count > 9 {
-                if let email = Auth.auth().currentUser?.email {
-                    qNum = String(quizNumber)
-                    let qName = email + "_" + String(quizNumber)
-                    quizDataFSBrain.recodeNewQuizToFS(quizName: qName, newQuiz: newQuizArray)
-                    
-                    db.collection("myQuiz").addDocument(data: [
-                        "flag": true,
-                        "date": Date().timeIntervalSince1970,
-                        "email": email,
-                        "myQuizName": qName,
-                        "myQuizNum": String(quizNumber),
-                        "totalQuizNum": newQuizArray.count]) { (error) in
-                            if let e = error {
-                                print("There was an issue saving data to firestore. \(e)")
-                            } else {
-                                print("Successfully saved data")
-                            }
-                            
+        if let qNumber = quizNumber.text {
+            if let quizNumber = Int(qNumber) {
+                if newQuizArray.count > 9 {
+                    if let email = Auth.auth().currentUser?.email {
+                        qNum = String(quizNumber)
+                        let qName = email + "_" + String(quizNumber)
+                        quizDataFSBrain.recodeNewQuizToFS(quizName: qName, newQuiz: newQuizArray)
+                        
+                        db.collection("myQuiz").addDocument(data: [
+                            "flag": true,
+                            "date": Date().timeIntervalSince1970,
+                            "email": email,
+                            "myQuizName": qName,
+                            "myQuizNum": String(quizNumber),
+                            "totalQuizNum": newQuizArray.count]) { (error) in
+                                if let e = error {
+                                    print("There was an issue saving data to firestore. \(e)")
+                                } else {
+                                    print("Successfully saved data")
+                                }
+                        }
+                        alertForCompleteShareQuiz()
                     }
-                    
-                    alertForCompleteShareQuiz()
+                } else {
+                    alertForQuizCounts()
                 }
             } else {
-                alertForQuizCounts()
+                alertForQuizNumber()
             }
-        } else {
-            alertForQuizNumber()
         }
-        
-        
     }
     
     func alertForCompleteShareQuiz() {
