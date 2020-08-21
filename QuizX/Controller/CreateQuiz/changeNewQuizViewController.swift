@@ -82,15 +82,23 @@ class changeNewQuizViewController: UIViewController {
         
         if let question = questionLabel.text, let explication = explicationLabel.text, let answer = answerLabel.text, let dummy1 = dummy1Label.text, let dummy2 = dummy2Label.text, let dummy3 = dummy3Label.text {
             
-            let newQuiz = QuizSet(answer: answer, dummy1: dummy1, dummy2: dummy2, dummy3: dummy3, explication: explication, question: question)
+            if question == "" {
+                alertForEmptyQuestion()
+            } else {
+                if answer == "" {
+                    alertForEmptyAnswer()
+                } else {
+                    
+                    let newQuiz = QuizSet(answer: answer, dummy1: dummy1, dummy2: dummy2, dummy3: dummy3, explication: explication, question: question)
+                    
+                    newQuizArray[quizNumber] = newQuiz
+                    
+                    recodeNewQuizToFS(newQuiz: newQuiz)
+                }
+            }
             
-            newQuizArray[quizNumber] = newQuiz
-            
-            recodeNewQuizToFS(newQuiz: newQuiz)
-            
+            performSegue(withIdentifier: "ToQuizTable", sender: self)
         }
-        
-        performSegue(withIdentifier: "ToQuizTable", sender: self)
     }
     
     @IBAction func quizDeleteButton(_ sender: UIButton) {
@@ -154,6 +162,24 @@ class changeNewQuizViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func alertForEmptyQuestion() {
+        
+        let alert = UIAlertController(title: "問題が空欄です", message: "", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func alertForEmptyAnswer() {
+        
+        let alert = UIAlertController(title: "正解が空欄です", message: "", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
     }
     
     

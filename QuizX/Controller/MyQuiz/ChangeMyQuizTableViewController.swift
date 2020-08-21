@@ -20,6 +20,8 @@ class ChangeMyQuizTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.hidesBackButton = true
+        
         getDocumentID()
         
         db.collection(myQuizName).getDocuments { (querySnapshot, err) in

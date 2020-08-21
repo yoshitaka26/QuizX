@@ -45,21 +45,28 @@ class ChangeMyQuizViewController: UIViewController {
         let d2 = dummy2.text ?? ""
         let d3 = dummy3.text ?? ""
         
-        db.collection(myQuizName).document(newQuizDocId).setData([
-            "answer": a,
-            "dummy1": d1,
-            "dummy2": d2,
-            "dummy3": d3,
-            "explication": e,
-            "question": q
-        ]) { (error) in
-            if let err = error {
-                print("Error writing document: \(err)")
+        if q == "" {
+            alertForEmptyQuestion()
+        } else {
+            if a == "" {
+                alertForEmptyAnswer()
+            } else {
+                db.collection(myQuizName).document(newQuizDocId).setData([
+                    "answer": a,
+                    "dummy1": d1,
+                    "dummy2": d2,
+                    "dummy3": d3,
+                    "explication": e,
+                    "question": q
+                ]) { (error) in
+                    if let err = error {
+                        print("Error writing document: \(err)")
+                    }
+                    print("Document successfully written!")
+                }
+                 performSegue(withIdentifier: "backToMyQuizSet", sender: self)
             }
-            print("Document successfully written!")
         }
-        
-        performSegue(withIdentifier: "backToMyQuizSet", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -69,5 +76,24 @@ class ChangeMyQuizViewController: UIViewController {
             destinationVC.myQuizName = myQuizName
             destinationVC.navigationItem.hidesBackButton = true
         }
+    }
+    
+    
+    func alertForEmptyQuestion() {
+        
+        let alert = UIAlertController(title: "問題が空欄です", message: "", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func alertForEmptyAnswer() {
+        
+        let alert = UIAlertController(title: "正解が空欄です", message: "", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
     }
 }

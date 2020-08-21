@@ -68,8 +68,6 @@ class CreateQuizMainViewController: UIViewController {
         } else if segue.identifier == "ToQuizView" {
             let destinationVC = segue.destination as! QuizViewController
             
-            newQuizArray.shuffle()
-            
             destinationVC.quizSetArray.append(contentsOf: newQuizArray)
             destinationVC.quizSetName = nil
             destinationVC.quizQNumber = 0
