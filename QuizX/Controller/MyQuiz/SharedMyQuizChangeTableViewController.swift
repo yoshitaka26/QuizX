@@ -32,7 +32,7 @@ class SharedMyQuizChangeTableViewController: UITableViewController {
                             let data = doc.data()
                             if let flag = data["flag"] as? Bool, let qEmail = data["email"] as? String {
                                 if flag && qEmail == email {
-                                    if let date = data["date"] as? Double, let myQuizName = data["myQuizName"] as? String, let myQuizNum = data["myQuizNum"] as? String, let totalQuizNum = data["totalQuizNum"] as? Int {
+                                    if let date = data["date"] as? String, let myQuizName = data["myQuizName"] as? String, let myQuizNum = data["myQuizNum"] as? String, let totalQuizNum = data["totalQuizNum"] as? Int {
                                         let quizData = MyQuiz(date: date, myQuizName: myQuizName, myQuizNum: myQuizNum, totalQuizNum: totalQuizNum)
                                         self.myQuiz.append(quizData)
                                         

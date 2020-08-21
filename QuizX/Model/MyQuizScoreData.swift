@@ -17,7 +17,7 @@ struct MyQuizScoreData {
 }
 
 struct MyQuizData {
-    let date: Double
+    let date: String
     let myQuizNum: String
     let playerEmail: String
     let totalpoints: Int
@@ -25,7 +25,7 @@ struct MyQuizData {
 }
 
 struct MyQuiz {
-    let date: Double
+    let date: String
     let myQuizName: String
     let myQuizNum: String
     let totalQuizNum: Int

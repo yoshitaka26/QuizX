@@ -48,9 +48,12 @@ class ResultViewController: UIViewController {
         
         if let name = myQuizName, let num = myQUizNum, let qEmail = myQuizEmail {
             if let email = Auth.auth().currentUser?.email {
+                let formatter = DateFormatter()
+                formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "ydMMM", options: 0, locale: Locale(identifier: "ja_JP"))
+                let dateToday = formatter.string(from: Date())
                 
                 db.collection("myQuiz").addDocument(data: [
-                    "date": Date().timeIntervalSince1970,
+                    "date": dateToday,
                     "email": qEmail,
                     "myQuizName": name,
                     "myQuizNum" : num,
@@ -69,12 +72,15 @@ class ResultViewController: UIViewController {
         }
         
         if let scoreName = quizSetName {
-            if totalTime != 0 {
-                scoreBrain.scoreRecord(totalPoints, totalQuizNum, scoreName, totalTime)
+            if scoreName == K.QName.challenge {
+                    scoreBrain.scoreRecord(totalPoints, totalQuizNum, scoreName, totalTime)
             } else {
-                scoreBrain.scoreRecord( 0, totalQuizNum, scoreName, totalTime)
+                if totalTime != 0 {
+                    scoreBrain.scoreRecord(totalPoints, totalQuizNum, scoreName, totalTime)
+                } else {
+                    scoreBrain.scoreRecord( 0, totalQuizNum, scoreName, totalTime)
+                }
             }
         }
     }
-    
 }

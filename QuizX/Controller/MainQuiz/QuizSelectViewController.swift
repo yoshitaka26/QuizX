@@ -59,6 +59,7 @@ class QuizSelectViewController: UIViewController {
             let destinationVC = segue.destination as! QuizChallengeViewController
             
             destinationVC.quizShuffle = true
+            destinationVC.quizSetName = K.QName.challenge
         }
     }
 }

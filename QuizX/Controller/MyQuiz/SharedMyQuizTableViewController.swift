@@ -34,7 +34,7 @@ class SharedMyQuizTableViewController: UITableViewController {
                             let data = doc.data()
                             if let qEmail = data["email"] as? String {
                                 if qEmail == email {
-                                    if let date = data["date"] as? Double, let myQuizNum = data["myQuizNum"] as? String, let playerEmail = data["playerEmail"] as? String, let totalPoints = data["totalPoints"] as? Int, let totalQuizNum = data["totalQuizNum"] as? Int {
+                                    if let date = data["date"] as? String, let myQuizNum = data["myQuizNum"] as? String, let playerEmail = data["playerEmail"] as? String, let totalPoints = data["totalPoints"] as? Int, let totalQuizNum = data["totalQuizNum"] as? Int {
                                         let quizData = MyQuizData(date: date, myQuizNum: myQuizNum, playerEmail: playerEmail, totalpoints: totalPoints, totalQuizNum: totalQuizNum)
                                     self.myQuizData.append(quizData)
                                     
@@ -63,13 +63,11 @@ class SharedMyQuizTableViewController: UITableViewController {
         
         let data = myQuizData[indexPath.row]
         let date = data.date
-        let roundDate = Int64((date * 1000.0).rounded())
-        let triedDate = Date(milliseconds: Int64(roundDate))
         
         cell.quizName.text = "\(data.myQuizNum)"
         cell.scoreLabel.text = "スコア \(data.totalpoints) / \(data.totalQuizNum)"
         cell.timeLabel.text = data.playerEmail
-        cell.tryLabel.text = "\(triedDate)"
+        cell.tryLabel.text = "\(date)"
      
         
         return cell
@@ -89,5 +87,9 @@ extension Date {
 }
 
 
+
+//let roundDate = Int64((date * 1000.0).rounded())
+//let triedDate = Date(milliseconds: Int64(roundDate))
 //Date().millisecondsSince1970 // 1476889390939
 //Date(milliseconds: 0) // "Dec 31, 1969, 4:00 PM" (PDT variant of 1970 UTC)
+

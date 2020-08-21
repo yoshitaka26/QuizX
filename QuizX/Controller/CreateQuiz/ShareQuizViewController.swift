@@ -47,9 +47,13 @@ class ShareQuizViewController: UIViewController {
                             let qName = email + "_" + String(quizNumber)
                             quizDataFSBrain.recodeNewQuizToFS(quizName: qName, newQuiz: newQuizArray)
                             
+                            let formatter = DateFormatter()
+                            formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "ydMMM", options: 0, locale: Locale(identifier: "ja_JP"))
+                            let dateToday = formatter.string(from: Date())
+                            
                             db.collection("myQuiz").addDocument(data: [
                                 "flag": true,
-                                "date": Date().timeIntervalSince1970,
+                                "date": dateToday,
                                 "email": email,
                                 "myQuizName": qName,
                                 "myQuizNum": String(quizNumber),

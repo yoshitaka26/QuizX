@@ -27,6 +27,8 @@ class QuizChallengeViewController: UIViewController {
     
     var userID: String? = nil
     
+    let userDefault = UserDefaults.standard
+    
     let quizDataExcelBrain = QuizDataExcelBrain()
     
     @IBOutlet weak var myQuizNameLabel: UILabel!
@@ -49,6 +51,13 @@ class QuizChallengeViewController: UIViewController {
                 //                self.quizSetArray.append(contentsOf: quizSet)
                 //            }
             } else {
+                if quizSetName == K.QName.challenge {
+                    if let data = userDefault.array(forKey: quizSetName) as? [Int] {
+                        self.myQuizNameLabel.text = "最高スコア \(data[0]) / \(data[1])"
+                    }
+                }
+                
+                
                 if let qDataBeg = quizDataExcelBrain.getQuizDataFromJSONFile(with: K.QData.beginner), let qDataInt = quizDataExcelBrain.getQuizDataFromJSONFile(with: K.QData.intermediate), let qDataAdv = quizDataExcelBrain.getQuizDataFromJSONFile(with: K.QData.advanced) {
                     quizSetArray.append(contentsOf: qDataBeg)
                     quizSetArray.append(contentsOf: qDataInt)
@@ -110,7 +119,7 @@ class QuizChallengeViewController: UIViewController {
                 } else if quizShuffle == true {
                     quizSetArray.shuffle()
                     destinationVC.quizSetArray.append(contentsOf: quizSetArray)
-                    destinationVC.quizSetName = nil
+                    destinationVC.quizSetName = K.QName.challenge
                     destinationVC.quizQNumber = 0
                     destinationVC.quizEndQNumber = quizSetArray.count
                     destinationVC.navigationItem.hidesBackButton = true
