@@ -17,6 +17,8 @@ class QuizTableViewController: UITableViewController {
     var quizDataName: String? = nil
     var quizNamesArray: [String] = []  //初級クイズ１...
     
+    var guestLogin = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,11 +48,14 @@ class QuizTableViewController: UITableViewController {
         
         cell.quizName.text = quizSetName
         
-        if let data = userDefault.array(forKey: name) as? [Int] {
-            cell.scoreLabel.text = "スコア \(data[0]) / \(data[1])"
-            cell.timeLabel.text = "タイム \(data[2])秒"
-            cell.tryLabel.text = "トライ \(data[3])回"
+        if !guestLogin {
+            if let data = userDefault.array(forKey: name) as? [Int] {
+                cell.scoreLabel.text = "スコア \(data[0]) / \(data[1])"
+                cell.timeLabel.text = "タイム \(data[2])秒"
+                cell.tryLabel.text = "トライ \(data[3])回"
+            }
         }
+        
         return cell
     }
     
@@ -78,6 +83,10 @@ class QuizTableViewController: UITableViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 destinationVC.quizSetName = quizNamesArray[indexPath.row] //初級クイズ１...
                 destinationVC.quizSetNumber = indexPath.row
+            }
+            
+            if guestLogin {
+                destinationVC.guestLogin = true
             }
         }
     }

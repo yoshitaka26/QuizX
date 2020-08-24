@@ -28,6 +28,8 @@ class ResultViewController: UIViewController {
     var myQuizEmail: String? = nil
     let scoreBrain = ScoreBrain()
     
+    var guestLogin = false
+    
     override func viewDidLoad() {
         self.navigationItem.hidesBackButton = true
         
@@ -44,7 +46,7 @@ class ResultViewController: UIViewController {
             timeLabel.text = "ゲームオーバー"
             logoView.image = #imageLiteral(resourceName: "logoxx")
         }
-
+        
         
         if let name = myQuizName, let num = myQUizNum, let qEmail = myQuizEmail {
             if let email = Auth.auth().currentUser?.email {
@@ -70,16 +72,29 @@ class ResultViewController: UIViewController {
                 }
             }
         }
-        
-        if let scoreName = quizSetName {
-            if scoreName == K.QName.challenge {
-                    scoreBrain.scoreRecord(totalPoints, totalQuizNum, scoreName, totalTime)
-            } else {
-                if totalTime != 0 {
+        if !guestLogin {
+            if let scoreName = quizSetName {
+                if scoreName == K.QName.challenge {
                     scoreBrain.scoreRecord(totalPoints, totalQuizNum, scoreName, totalTime)
                 } else {
-                    scoreBrain.scoreRecord( 0, totalQuizNum, scoreName, totalTime)
+                    if totalTime != 0 {
+                        scoreBrain.scoreRecord(totalPoints, totalQuizNum, scoreName, totalTime)
+                    } else {
+                        scoreBrain.scoreRecord( 0, totalQuizNum, scoreName, totalTime)
+                    }
                 }
+            }
+        }
+    }
+    @IBAction func backToHomeButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "backToHome", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "backToHome" {
+            let destinationVC = segue.destination as! WelcomViewCntroller
+            if guestLogin {
+                destinationVC.guestLogin = true
             }
         }
     }

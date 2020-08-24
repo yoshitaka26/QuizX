@@ -49,6 +49,8 @@ class QuizViewController: UIViewController {
     var myQUizNum: String? = nil
     var myQuizEmail: String? = nil
     
+    var guestLogin = false
+    
     
     override func viewDidLoad() {
         answerAButton.isEnabled = false
@@ -118,6 +120,10 @@ class QuizViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToResultView" {
             let destinationVC = segue.destination as! ResultViewController
+            
+            if guestLogin {
+                destinationVC.guestLogin = true
+            }
             
             destinationVC.totalPoints = correctPoints
             destinationVC.quizSetName = quizSetName

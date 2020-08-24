@@ -16,10 +16,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="EdV-wZ-qXg">
-                                <rect key="frame" x="0.0" y="682" width="414" height="130"/>
+                                <rect key="frame" x="0.0" y="602" width="414" height="210"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0J-Lq-RnN">
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiP-Xo-2Wb">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                        <color key="backgroundColor" red="1" green="0.33725490200000002" blue="0.33725490200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <state key="normal" title="ゲストで遊ぶ">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="guestButton:" destination="Xbg-PL-IJX" eventType="touchUpInside" id="hiL-1L-JEb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0J-Lq-RnN">
+                                        <rect key="frame" x="0.0" y="80" width="414" height="50"/>
                                         <color key="backgroundColor" red="1" green="0.33725490196078434" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="S8v-YW-CQs"/>
@@ -33,7 +44,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbo-CS-7ah">
-                                        <rect key="frame" x="0.0" y="80" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="160" width="414" height="50"/>
                                         <color key="backgroundColor" red="1" green="0.33725490196078434" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="pUd-yw-hQ9"/>
@@ -67,10 +78,13 @@
                         <viewLayoutGuide key="safeArea" id="J3h-x7-hhJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="26x-ox-4xJ"/>
+                    <connections>
+                        <segue destination="fSn-5C-rWs" kind="show" identifier="loginGuest" id="7SL-PQ-YmD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDK-uX-odF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3494.202898550725" y="114.50892857142857"/>
+            <point key="canvasLocation" x="-3523" y="159"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="OmN-LU-qrh">
@@ -275,6 +289,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="2jM-no-Fdv"/>
                     <connections>
+                        <outlet property="challengeButton" destination="8Vb-PI-spV" id="Bq2-1T-TOu"/>
                         <segue destination="xzW-Ts-cGW" kind="show" identifier="ToBegQuizList" id="7vX-7i-alT"/>
                         <segue destination="xzW-Ts-cGW" kind="show" identifier="ToIntQuizList" id="8z5-9a-SRy"/>
                         <segue destination="xzW-Ts-cGW" kind="show" identifier="ToAdvQuizList" id="0FA-PP-bo9"/>
@@ -451,6 +466,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="k6R-tL-0Gr"/>
                     <connections>
+                        <outlet property="UserQuizButton" destination="hes-Tm-Or6" id="358-Uw-a36"/>
                         <outlet property="myQuizButton" destination="XIr-em-0gI" id="muW-0d-YEp"/>
                         <outlet property="quizButton" destination="9M0-5Y-WcS" id="BRc-Ms-7qA"/>
                         <outlet property="scoreButton" destination="OWi-Qg-Pdu" id="eFW-yB-Tg2"/>
@@ -1048,7 +1064,7 @@
                                                     <color key="titleColor" red="1" green="0.33725490200000002" blue="0.33725490200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="fSn-5C-rWs" kind="show" id="sHj-I7-5N6"/>
+                                                    <action selector="backToHomeButton:" destination="wMh-IN-QsW" eventType="touchUpInside" id="T48-Jt-MbQ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1074,6 +1090,7 @@
                         <outlet property="logoView" destination="Lkw-Hj-VmF" id="AtS-sj-Wdv"/>
                         <outlet property="pointsLabel" destination="C9I-rn-euY" id="Tpb-3b-Q0q"/>
                         <outlet property="timeLabel" destination="Fbg-MN-8Xz" id="meh-uR-UtQ"/>
+                        <segue destination="fSn-5C-rWs" kind="show" identifier="backToHome" id="RCH-GA-W0u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bOr-52-5ib" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2875,16 +2892,16 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VcU-2Y-Oom"/>
+        <segue reference="wwZ-qz-UfY"/>
         <segue reference="xom-Z9-aGh"/>
-        <segue reference="KHu-nH-TOi"/>
+        <segue reference="v6S-Dw-kRz"/>
         <segue reference="mw6-6z-tj2"/>
         <segue reference="jJV-2Q-CCT"/>
         <segue reference="z3c-Hd-4wi"/>
-        <segue reference="7vX-7i-alT"/>
+        <segue reference="0FA-PP-bo9"/>
         <segue reference="AWq-15-hXX"/>
-        <segue reference="nVO-zQ-GH9"/>
-        <segue reference="Syw-bR-fHE"/>
+        <segue reference="sep-Xy-Riz"/>
+        <segue reference="RCH-GA-W0u"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>

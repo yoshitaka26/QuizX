@@ -27,6 +27,8 @@ class QuizChallengeViewController: UIViewController {
     
     var userID: String? = nil
     
+    var guestLogin = false
+    
     let userDefault = UserDefaults.standard
     
     let quizDataExcelBrain = QuizDataExcelBrain()
@@ -90,6 +92,10 @@ class QuizChallengeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToQuizView" {
             let destinationVC = segue.destination as! QuizViewController
+            
+            if guestLogin {
+                destinationVC.guestLogin = true
+            }
             
             if myQuiz {
                 destinationVC.myQuiz = true
