@@ -17,16 +17,15 @@ struct QuizDataExcelBrain {
     let namesAdvanced: [String] = ["上級クイズ１", "上級クイズ２", "上級クイズ３", "上級クイズ４", "上級クイズ５", "上級クイズ６", "上級クイズ７", "上級クイズ８"]
     
     
-    func getQuizDataFromJSONFile(with fileName: String) -> [QuizSet]? {
+    func getQuizDataFromJSONFile(with fileName: String) -> [QuizDataSet]? {
         let decoder = JSONDecoder()
-        
+
         if let path = Bundle.main.url(forResource: fileName, withExtension: "json") {
             if let data = try? Data(contentsOf: path) {
                 do {
                     let quizData = try decoder.decode(QuizDataExcel.self, from: data)
                     let quizDataSet = quizData.quizDataSet
-                    let newDataSetType = changeQuizDataSetType(from: quizDataSet)
-                    return newDataSetType
+                    return quizDataSet
                 } catch {
                     print("fail to decode quizData")
                 }
@@ -38,15 +37,4 @@ struct QuizDataExcelBrain {
         }
         return nil
     }
-    
-    func changeQuizDataSetType(from DataSet: [QuizDataSet]) -> [QuizSet] {
-        var newDataSet = [QuizSet]()
-        
-        for data in DataSet {
-            let quiz = QuizSet.init(answer: data.answer, dummy1: data.dummy1, dummy2: data.dummy2, dummy3: data.dummy3, explication: data.explication, question: data.question)
-            newDataSet.append(quiz)
-        }
-        return newDataSet
-    }
-
 }

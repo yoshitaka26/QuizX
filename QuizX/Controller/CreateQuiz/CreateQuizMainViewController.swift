@@ -7,30 +7,20 @@
 //
 
 import UIKit
-import Firebase
 
 class CreateQuizMainViewController: UIViewController {
     
-    let db = Firestore.firestore()
-    var quizDataFSBrain = QuizDataFSBrain()
+    var newQuizArray: [QuizDataSet] = []
     
-    var newQuizArray: [QuizSet] = []
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        newQuizArray = []
-        
-        if let email = Auth.auth().currentUser?.email {
-            quizDataFSBrain.loadQuizDataFromFS(with: email) { (quizSet) in
-                self.newQuizArray.append(contentsOf: quizSet)
-            }
-        }
-    }
-    
+    let myQuizDataModel = MyQuizDataModel()
     
     override func viewDidLoad() {
+        
         self.navigationItem.hidesBackButton = true
         
+        let backBarButtonItem = UIBarButtonItem()
+        backBarButtonItem.title = ""
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     
@@ -44,28 +34,21 @@ class CreateQuizMainViewController: UIViewController {
     
     @IBAction func NewQuizChallengeButton(_ sender: UIButton) {
         
-        if newQuizArray.count == 0 {
-            alertForNoQuiz()
-        } else {
-            performSegue(withIdentifier: "ToQuizView", sender: self)
-        }
+        if let myQuiz = myQuizDataModel.loadItems() {
+            newQuizArray = myQuiz
+            
+            if newQuizArray.count == 0 {
+                alertForNoQuiz()
+            } else {
+                performSegue(withIdentifier: "ToQuizView", sender: self)
+            }        }
+        
     }
     
-    @IBAction func shareQuizButton(_ sender: UIButton) {
-        performSegue(withIdentifier: "ToQuizShare", sender: self)
-    }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ToCreateOperation" {
-            let destinationVC = segue.destination as! CreateOperationViewController
-            
-            destinationVC.newQuizArray.append(contentsOf: newQuizArray)
-        } else if segue.identifier == "ToNewQuizTable" {
-            let destinationVC = segue.destination as! NewQuizTableViewController
-            
-            destinationVC.newQuizArray.append(contentsOf: newQuizArray)
-        } else if segue.identifier == "ToQuizView" {
+        if segue.identifier == "ToQuizView" {
             let destinationVC = segue.destination as! QuizViewController
             
             destinationVC.quizSetArray.append(contentsOf: newQuizArray)
@@ -73,10 +56,6 @@ class CreateQuizMainViewController: UIViewController {
             destinationVC.quizQNumber = 0
             destinationVC.quizEndQNumber = newQuizArray.count
             destinationVC.navigationItem.hidesBackButton = false
-        } else if segue.identifier == "ToQuizShare" {
-            let destinationVC = segue.destination as! ShareQuizViewController
-            
-            destinationVC.newQuizArray.append(contentsOf: newQuizArray)
         }
     }
     

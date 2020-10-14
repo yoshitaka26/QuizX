@@ -7,13 +7,10 @@
 //
 
 import UIKit
-import Firebase
 
 class CreateOperationViewController: UIViewController {
     
-    let db = Firestore.firestore()
-    
-    var newQuizArray: [QuizSet] = []
+    var newQuizArray: [QuizDataSet] = []
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var explicationLabel: UILabel!
@@ -22,9 +19,14 @@ class CreateOperationViewController: UIViewController {
     @IBOutlet weak var dummy2Label: UILabel!
     @IBOutlet weak var dummy3Label: UILabel!
     
+    let myQuizDataModel = MyQuizDataModel()
+    
     
     override func viewDidLoad() {
         
+        if let myQuiz = myQuizDataModel.loadItems() {
+            newQuizArray = myQuiz
+        }
     }
     
     @IBAction func questionButton(_ sender: UIButton) {
@@ -75,14 +77,15 @@ class CreateOperationViewController: UIViewController {
                     alertForEmptyAnswer()
                 } else {
                     
-                    let newQuiz = QuizSet(answer: answer, dummy1: dummy1, dummy2: dummy2, dummy3: dummy3, explication: explication, question: question)
+                    let newQuiz = QuizDataSet(answer: answer, dummy1: dummy1, dummy2: dummy2, dummy3: dummy3, explication: explication, question: question)
                     
                     newQuizArray.append(newQuiz)
                     
-                    recodeNewQuizToFS(newQuiz: newQuiz)
+                    myQuizDataModel.saveItems(projectArray: newQuizArray)
+                    
+                    performSegue(withIdentifier: "ToCreateQuizMain", sender: self)
                 }
             }
-            
         }
     }
     
@@ -107,30 +110,6 @@ class CreateOperationViewController: UIViewController {
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)
-    }
-    
-    
-    
-    func recodeNewQuizToFS(newQuiz: QuizSet) {
-        
-        let documentName = "newQuiz\(Date().timeIntervalSince1970)"
-        
-        if let email = Auth.auth().currentUser?.email {
-            db.collection(email).document(documentName).setData([
-                "answer": newQuiz.answer,
-                "dummy1": newQuiz.dummy1,
-                "dummy2": newQuiz.dummy2,
-                "dummy3": newQuiz.dummy3,
-                "explication": newQuiz.explication,
-                "question": newQuiz.question
-            ]) { (error) in
-                if let err = error {
-                    print("Error writing document: \(err)")
-                }
-                print("Document successfully written!")
-            }
-        }
-        performSegue(withIdentifier: "ToCreateQuizMain", sender: self)
     }
     
     

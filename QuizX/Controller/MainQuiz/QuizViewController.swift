@@ -7,13 +7,10 @@
 //
 
 import UIKit
-import Firebase
 
 class QuizViewController: UIViewController {
     
-    let db = Firestore.firestore()
-    
-    var quizSetArray: [QuizSet] = []
+    var quizSetArray: [QuizDataSet] = []
     var quizSetName: String? = nil //初級クイズ１...
     var quizSetNumber: Int = 0 //indexPath.row
     var quizQNumber: Int = 0
@@ -43,14 +40,6 @@ class QuizViewController: UIViewController {
     var answeredTime: Float = 0
     
     var correctPoints: Int = 0
-    
-    var myQuiz: Bool = false
-    var myQuizName: String? = nil
-    var myQUizNum: String? = nil
-    var myQuizEmail: String? = nil
-    
-    var guestLogin = false
-    
     
     override func viewDidLoad() {
         answerAButton.isEnabled = false
@@ -121,26 +110,20 @@ class QuizViewController: UIViewController {
         if segue.identifier == "ToResultView" {
             let destinationVC = segue.destination as! ResultViewController
             
-            if guestLogin {
-                destinationVC.guestLogin = true
-            }
+        
             
             destinationVC.totalPoints = correctPoints
             destinationVC.quizSetName = quizSetName
             destinationVC.totalQuizNum = totalQuizNum
             destinationVC.totalAnswerdtime = answeredTime
-            if myQuiz {
-                destinationVC.myQuizName = myQuizName
-                destinationVC.myQUizNum = myQUizNum
-                destinationVC.myQuizEmail = myQuizEmail
-            }
+            
         }
     }
     
     
     //MARK: - Quiz Update
     
-    func quizUpdate(with quizDataSet: [QuizSet], number: Int) {
+    func quizUpdate(with quizDataSet: [QuizDataSet], number: Int) {
         let currentQuiz = quizDataSet[number]
         var choices = [currentQuiz.answer, currentQuiz.dummy1, currentQuiz.dummy2, currentQuiz.dummy3]
         choices.shuffle()

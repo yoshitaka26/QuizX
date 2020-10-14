@@ -6,8 +6,5 @@ target 'QuizX' do
 
   # Pods for QuizX
   
-  pod 'Firebase/Analytics'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Firestore'
   
 end

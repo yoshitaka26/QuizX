@@ -7,23 +7,17 @@
 //
 
 import UIKit
-import Firebase
 
 class QuizSelectViewController: UIViewController {
     
-    let db = Firestore.firestore()
-    
     let quizDataExcelBrain = QuizDataExcelBrain()
     
-    var guestLogin = false
-    
     @IBOutlet weak var challengeButton: UIButton!
+    
     override func viewDidLoad() {
-        if guestLogin {
-            challengeButton.isEnabled = false
-            challengeButton.setTitle("", for: .normal)
-        }
-       
+       let backBarButtonItem = UIBarButtonItem()
+       backBarButtonItem.title = ""
+       self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     
@@ -50,9 +44,6 @@ class QuizSelectViewController: UIViewController {
             destinationVC.quizDataName = K.QName.beginner
             destinationVC.quizNamesArray = quizDataExcelBrain.namesBeginner
             
-            if guestLogin {
-                destinationVC.guestLogin = true
-            }
         }
         else if segue.identifier == "ToIntQuizList" {
             let destinationVC = segue.destination as! QuizTableViewController
@@ -60,9 +51,6 @@ class QuizSelectViewController: UIViewController {
             destinationVC.quizDataName = K.QName.intermediate
             destinationVC.quizNamesArray = quizDataExcelBrain.namesIntermediate
             
-            if guestLogin {
-                destinationVC.guestLogin = true
-            }
         }
         else if segue.identifier == "ToAdvQuizList" {
             let destinationVC = segue.destination as! QuizTableViewController
@@ -70,9 +58,6 @@ class QuizSelectViewController: UIViewController {
             destinationVC.quizDataName = K.QName.advanced
             destinationVC.quizNamesArray = quizDataExcelBrain.namesAdvanced
             
-            if guestLogin {
-                destinationVC.guestLogin = true
-            }
         } else if segue.identifier == "ToChallengeQuiz" {
             let destinationVC = segue.destination as! QuizChallengeViewController
             

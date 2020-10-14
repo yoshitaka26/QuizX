@@ -7,27 +7,24 @@
 //
 
 import UIKit
-import Firebase
 
 class QuizTableViewController: UITableViewController {
     
-    let db = Firestore.firestore()
     let userDefault = UserDefaults.standard
     
     var quizDataName: String? = nil
     var quizNamesArray: [String] = []  //初級クイズ１...
     
-    var guestLogin = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        if let name =  quizDataName {
-//            fetchQuizNameFromFS(quizDataName: name)
-//        }
-        
         tableView.register(UINib(nibName: "ResultCell", bundle: nil), forCellReuseIdentifier: "resultCell")
+        
+        let backBarButtonItem = UIBarButtonItem()
+                    backBarButtonItem.title = ""
+                    self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     
@@ -48,13 +45,12 @@ class QuizTableViewController: UITableViewController {
         
         cell.quizName.text = quizSetName
         
-        if !guestLogin {
-            if let data = userDefault.array(forKey: name) as? [Int] {
+        if let data = userDefault.array(forKey: name) as? [Int] {
                 cell.scoreLabel.text = "スコア \(data[0]) / \(data[1])"
                 cell.timeLabel.text = "タイム \(data[2])秒"
                 cell.tryLabel.text = "トライ \(data[3])回"
             }
-        }
+        
         
         return cell
     }
@@ -83,29 +79,6 @@ class QuizTableViewController: UITableViewController {
             if let indexPath = tableView.indexPathForSelectedRow {
                 destinationVC.quizSetName = quizNamesArray[indexPath.row] //初級クイズ１...
                 destinationVC.quizSetNumber = indexPath.row
-            }
-            
-            if guestLogin {
-                destinationVC.guestLogin = true
-            }
-        }
-    }
-    
-    //MARK: - Fetch Data Method
-    
-    func fetchQuizNameFromFS(quizDataName: String) {
-        db.collection(quizDataName).getDocuments { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents of quizName: \(err)")
-            } else {
-                for documet in querySnapshot!.documents {
-                    if let name = documet.data() as? [String: String] {
-                        if let quizName = name["name"] {
-                            self.quizNamesArray.append(quizName)
-                        }
-                    }
-                }
-                self.tableView.reloadData()
             }
         }
     }

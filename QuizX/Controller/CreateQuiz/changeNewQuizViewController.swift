@@ -7,16 +7,14 @@
 //
 
 import UIKit
-import Firebase
 
 class changeNewQuizViewController: UIViewController {
     
-    let db = Firestore.firestore()
     var quizNumber: Int = 0
-    var documentNameNum: String = ""
     
-    var newQuizArray: [QuizSet] = []
-    var newQuizDocId: String = ""
+    var newQuizArray: [QuizDataSet] = []
+    
+    let myQuizDataModel = MyQuizDataModel()
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var explicationLabel: UILabel!
@@ -26,12 +24,6 @@ class changeNewQuizViewController: UIViewController {
     @IBOutlet weak var dummy3Label: UILabel!
     
     override func viewDidLoad() {
-        
-        if quizNumber + 1 < 10 {
-            documentNameNum = "0\(quizNumber + 1)"
-        } else {
-            documentNameNum = String(quizNumber + 1)
-        }
         
         let quiz = newQuizArray[quizNumber]
         questionLabel.text = quiz.question
@@ -89,11 +81,12 @@ class changeNewQuizViewController: UIViewController {
                     alertForEmptyAnswer()
                 } else {
                     
-                    let newQuiz = QuizSet(answer: answer, dummy1: dummy1, dummy2: dummy2, dummy3: dummy3, explication: explication, question: question)
+                    let newQuiz = QuizDataSet(answer: answer, dummy1: dummy1, dummy2: dummy2, dummy3: dummy3, explication: explication, question: question)
                     
                     newQuizArray[quizNumber] = newQuiz
                     
-                    recodeNewQuizToFS(newQuiz: newQuiz)
+                    myQuizDataModel.saveItems(projectArray: newQuizArray)
+    
                 }
             }
             
@@ -105,7 +98,7 @@ class changeNewQuizViewController: UIViewController {
         
         newQuizArray.remove(at: quizNumber)
         
-        deleteNewQuizFromFS()
+        myQuizDataModel.saveItems(projectArray: newQuizArray)
         
         performSegue(withIdentifier: "ToQuizTable", sender: self)
     }
@@ -132,38 +125,14 @@ class changeNewQuizViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    
-    func recodeNewQuizToFS(newQuiz: QuizSet) {
-        
-        if let email = Auth.auth().currentUser?.email {
-            db.collection(email).document(newQuizDocId).setData([
-                "answer": newQuiz.answer,
-                "dummy1": newQuiz.dummy1,
-                "dummy2": newQuiz.dummy2,
-                "dummy3": newQuiz.dummy3,
-                "explication": newQuiz.explication,
-                "question": newQuiz.question
-            ]) { (error) in
-                if let err = error {
-                    print("Error writing document: \(err)")
-                }
-                print("Document successfully written!")
-            }
-        }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier == "ToQuizTable" {
+               let destinationVC = segue.destination as! NewQuizTableViewController
+               destinationVC.navigationItem.hidesBackButton = true
+           }
     }
     
-    func deleteNewQuizFromFS() {
-        if let email = Auth.auth().currentUser?.email {
-            db.collection(email).document(newQuizDocId).delete() { err in
-                if let err = err {
-                    print("Error removing document: \(err)")
-                } else {
-                    print("Document successfully removed!")
-                }
-            }
-        }
-    }
-    
+
     func alertForEmptyQuestion() {
         
         let alert = UIAlertController(title: "問題が空欄です", message: "", preferredStyle: .alert)
@@ -180,15 +149,6 @@ class changeNewQuizViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         
         present(alert, animated: true, completion: nil)
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ToQuizTable" {
-            let destinationVC = segue.destination as! NewQuizTableViewController
-            
-            destinationVC.newQuizArray.append(contentsOf: newQuizArray)
-        }
     }
 }
 

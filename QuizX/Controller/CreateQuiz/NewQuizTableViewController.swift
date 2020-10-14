@@ -7,21 +7,25 @@
 //
 
 import UIKit
-import Firebase
 
 class NewQuizTableViewController: UITableViewController {
     
-    let db = Firestore.firestore()
+    var newQuizArray: [QuizDataSet] = []
     
-    var newQuizArray: [QuizSet] = []
-    var newQuizDocId: [String] = []
+    let myQuizDataModel = MyQuizDataModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getDocumentID()
+        if let myQuiz = myQuizDataModel.loadItems() {
+                  newQuizArray = myQuiz
+              }
         
         self.navigationItem.hidesBackButton = true
+        
+        let backBarButtonItem = UIBarButtonItem()
+                    backBarButtonItem.title = ""
+                    self.navigationItem.backBarButtonItem = backBarButtonItem
         
     }
     
@@ -53,12 +57,12 @@ class NewQuizTableViewController: UITableViewController {
         if segue.identifier == "ToChangeNewQuiz" {
             let destinationVC = segue.destination as! changeNewQuizViewController
             
+            destinationVC.newQuizArray = newQuizArray
+            
             if let indexPath = tableView.indexPathForSelectedRow {
-                destinationVC.newQuizDocId = newQuizDocId[indexPath.row]
                 destinationVC.quizNumber = indexPath.row
             }
             
-            destinationVC.newQuizArray.append(contentsOf: newQuizArray)
         } else if segue.identifier == "ToCreateQuizMain" {
             let destinationVC = segue.destination as! CreateQuizMainViewController
             
@@ -66,18 +70,4 @@ class NewQuizTableViewController: UITableViewController {
         }
     }
     
-    func getDocumentID() {
-        
-        if let email = Auth.auth().currentUser?.email {
-            db.collection(email).getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        self.newQuizDocId.append(document.documentID)
-                    }
-                }
-            }
-        }
-    }
 }
