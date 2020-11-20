@@ -1,17 +1,17 @@
 # QuizX
-### 概要  
-#### クイズアプリ
+#### 概要  
+クイズアプリ
 
 ![Pod Platform](https://img.shields.io/cocoapods/p/AMClockView.svg?style=flat)
 
 ## Description
-### 機能  
+#### 機能  
  -クイズプレイ  
  　-正解数・回答時間記録（ローカル）  
  -クイズ作成  
  　-クイズデータ記録（ローカル）  
    
-### データ  
+#### データ  
  -クイズデータ（JSON）  
 
 ## Demo
