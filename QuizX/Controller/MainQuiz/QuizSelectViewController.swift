@@ -12,12 +12,23 @@ class QuizSelectViewController: UIViewController {
     
     let quizDataExcelBrain = QuizDataExcelBrain()
     
+    let scoreBrain = ScoreDataRecordBrain()
+    var scoreData = [ScoreData]()
+    
+    
     @IBOutlet weak var challengeButton: UIButton!
     
     override func viewDidLoad() {
-       let backBarButtonItem = UIBarButtonItem()
-       backBarButtonItem.title = ""
-       self.navigationItem.backBarButtonItem = backBarButtonItem
+        
+        let backBarButtonItem = UIBarButtonItem()
+        backBarButtonItem.title = ""
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let data = scoreBrain.loadScore() {
+            scoreData = data
+        }
     }
     
     
@@ -43,6 +54,7 @@ class QuizSelectViewController: UIViewController {
             
             destinationVC.quizDataName = K.QName.beginner
             destinationVC.quizNamesArray = quizDataExcelBrain.namesBeginner
+            destinationVC.scoreData = scoreData
             
         }
         else if segue.identifier == "ToIntQuizList" {
@@ -50,6 +62,7 @@ class QuizSelectViewController: UIViewController {
             
             destinationVC.quizDataName = K.QName.intermediate
             destinationVC.quizNamesArray = quizDataExcelBrain.namesIntermediate
+            destinationVC.scoreData = scoreData
             
         }
         else if segue.identifier == "ToAdvQuizList" {
@@ -57,13 +70,17 @@ class QuizSelectViewController: UIViewController {
             
             destinationVC.quizDataName = K.QName.advanced
             destinationVC.quizNamesArray = quizDataExcelBrain.namesAdvanced
+            destinationVC.scoreData = scoreData
             
         } else if segue.identifier == "ToChallengeQuiz" {
             let destinationVC = segue.destination as! QuizChallengeViewController
             
             destinationVC.quizShuffle = true
             destinationVC.quizSetName = K.QName.challenge
-            
+            let data = scoreData.filter { $0.identifier == K.QName.challenge}
+            if data.count != 0 {
+                destinationVC.challengeScore = data[0]
+            }
         }
     }
 }

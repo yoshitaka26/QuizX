@@ -12,7 +12,6 @@ import UIKit
 class ResultViewController: UIViewController {
     
     @IBOutlet weak var logoView: UIImageView!
-    
     @IBOutlet weak var pointsLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
@@ -21,7 +20,7 @@ class ResultViewController: UIViewController {
     var quizSetName: String? = nil  //初級クイズ１...
     var totalAnswerdtime: Float = 0
     
-    let scoreBrain = ScoreBrain()
+    var scoreBrain = ScoreDataRecordBrain()
     
     override func viewDidLoad() {
         self.navigationItem.hidesBackButton = true
@@ -39,18 +38,18 @@ class ResultViewController: UIViewController {
         
         if let scoreName = quizSetName {
             if scoreName == K.QName.challenge {
-                scoreBrain.scoreRecord(totalPoints, totalQuizNum, scoreName, totalTime)
+                scoreBrain.calculateScore(totalPoints, totalQuizNum, scoreName, totalTime)
             } else {
                 if totalTime != 0 {
-                    scoreBrain.scoreRecord(totalPoints, totalQuizNum, scoreName, totalTime)
+                    scoreBrain.calculateScore(totalPoints, totalQuizNum, scoreName, totalTime)
                 } else {
-                    scoreBrain.scoreRecord( 0, totalQuizNum, scoreName, totalTime)
+                    scoreBrain.calculateScore(0, totalQuizNum, scoreName, totalTime)
                 }
             }
         }
     }
     
     @IBAction func backToHomeButton(_ sender: UIButton) {
-            performSegue(withIdentifier: "backToHome", sender: self)
+        performSegue(withIdentifier: "backToHome", sender: self)
     }
 }

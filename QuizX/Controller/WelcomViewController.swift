@@ -32,10 +32,6 @@ class WelcomViewCntroller: UIViewController {
         performSegue(withIdentifier: "ToQuizSelect", sender: self)
     }
     
-    @IBAction func myQuizButton(_ sender: UIButton) {
-        performSegue(withIdentifier: "ToMyQuiz", sender: self)
-    }
-    
 }
 
 

@@ -23,3 +23,13 @@ struct QuizDataSet: Codable {
     
 }
 
+struct NewQuizDataExcel: Codable {
+    let quizDataSet: [NewQuizDataSet]
+}
+
+struct NewQuizDataSet: Codable {
+    let q: String
+    let a: String
+}
+
+

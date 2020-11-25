@@ -14,7 +14,7 @@ struct K {
         static let beginner = "quizNamesBeginner"
         static let intermediate = "quizNamesIntermediate"
         static let advanced =  "quizNamesAdvanced"
-        static let challenge = "shallenge"
+        static let challenge = "challenge"
     }
     
     struct QData {

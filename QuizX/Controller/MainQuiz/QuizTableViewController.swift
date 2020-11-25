@@ -10,18 +10,18 @@ import UIKit
 
 class QuizTableViewController: UITableViewController {
     
-    let userDefault = UserDefaults.standard
-    
     var quizDataName: String? = nil
     var quizNamesArray: [String] = []  //初級クイズ１...
     
+    let scoreBrain = ScoreDataRecordBrain()
+    var scoreData = [ScoreData]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(UINib(nibName: "ResultCell", bundle: nil), forCellReuseIdentifier: "resultCell")
-        
+ 
         let backBarButtonItem = UIBarButtonItem()
                     backBarButtonItem.title = ""
                     self.navigationItem.backBarButtonItem = backBarButtonItem
@@ -41,16 +41,22 @@ class QuizTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath) as! ResultCell
         
         let quizSetName = quizNamesArray[indexPath.row]
-        let name = quizSetName
         
         cell.quizName.text = quizSetName
         
-        if let data = userDefault.array(forKey: name) as? [Int] {
-                cell.scoreLabel.text = "スコア \(data[0]) / \(data[1])"
-                cell.timeLabel.text = "タイム \(data[2])秒"
-                cell.tryLabel.text = "トライ \(data[3])回"
-            }
+        cell.scoreLabel.text = "スコア"
+        cell.timeLabel.text = "タイム"
+        cell.tryLabel.text = "トライ"
         
+        for score in scoreData {
+            if score.identifier == quizSetName {
+                DispatchQueue.main.async {
+                    cell.scoreLabel.text = "スコア \(score.totalPoints) / \(score.totalQuizNum)"
+                    cell.timeLabel.text = "タイム \(score.totalTime)秒"
+                    cell.tryLabel.text = "トライ \(score.challengeCounts)回"
+                }
+            }
+        }
         
         return cell
     }

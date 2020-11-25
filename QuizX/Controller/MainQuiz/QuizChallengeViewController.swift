@@ -16,7 +16,7 @@ class QuizChallengeViewController: UIViewController {
     var quizSetArray: [QuizDataSet] = []
     var quizShuffle: Bool = false
     
-    let userDefault = UserDefaults.standard
+    var challengeScore: ScoreData? = nil
     
     let quizDataExcelBrain = QuizDataExcelBrain()
     
@@ -30,12 +30,11 @@ class QuizChallengeViewController: UIViewController {
                 quizSetArray.append(contentsOf: qData)
             }
         } else {
-            if quizSetName == K.QName.challenge {
-                if let data = userDefault.array(forKey: quizSetName) as? [Int] {
-                    self.myQuizNameLabel.text = "最高スコア \(data[0]) / \(data[1])"
+            if let data  = challengeScore {
+                DispatchQueue.main.async {
+                     self.myQuizNameLabel.text = "最高スコア \(data.totalPoints) / \(data.totalQuizNum)"
                 }
             }
-            
             
             if let qDataBeg = quizDataExcelBrain.getQuizDataFromJSONFile(with: K.QData.beginner), let qDataInt = quizDataExcelBrain.getQuizDataFromJSONFile(with: K.QData.intermediate), let qDataAdv = quizDataExcelBrain.getQuizDataFromJSONFile(with: K.QData.advanced) {
                 quizSetArray.append(contentsOf: qDataBeg)

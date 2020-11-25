@@ -37,4 +37,27 @@ struct QuizDataExcelBrain {
         }
         return nil
     }
+    
+    
+    func getNewQuizDataFromJSONFile() -> [NewQuizDataSet]? {
+        let decoder = JSONDecoder()
+
+        if let path = Bundle.main.url(forResource: "newQuizData", withExtension: "json") {
+            if let data = try? Data(contentsOf: path) {
+                do {
+                    let quizData = try decoder.decode(NewQuizDataExcel.self, from: data)
+                    let quizDataSet = quizData.quizDataSet
+                    return quizDataSet
+                } catch {
+                    print("fail to decode quizData")
+                }
+            } else {
+                print("fail to get Data")
+            }
+        } else {
+            print("fail to get file path to decode")
+        }
+        return nil
+    }
+    
 }
