@@ -11,6 +11,7 @@ import UIKit
 class WelcomViewCntroller: UIViewController {
     
     @IBOutlet weak var quizButton: UIButton!
+    @IBOutlet weak var quizXWebButton: UIButton!
     @IBOutlet weak var myQuizButton: UIButton!
     
     
@@ -20,6 +21,7 @@ class WelcomViewCntroller: UIViewController {
         self.navigationItem.hidesBackButton = true
         
         quizButton.layer.cornerRadius = quizButton.frame.size.height / 4
+        quizXWebButton.layer.cornerRadius = quizButton.frame.size.height / 4
         
         myQuizButton.layer.cornerRadius = myQuizButton.frame.size.height / 4
         
@@ -30,6 +32,13 @@ class WelcomViewCntroller: UIViewController {
     
     @IBAction func quizButton(_ sender: UIButton) {
         performSegue(withIdentifier: "ToQuizSelect", sender: self)
+    }
+    @IBAction func quizXWebButton(_ sender: UIButton) {
+        
+        let storyboard = UIStoryboard(name: "QuizXWeb", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "QuizXWeb")
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
 }

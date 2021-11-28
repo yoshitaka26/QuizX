@@ -30,29 +30,6 @@ class SettingTableViewController: UITableViewController {
                                                name: UserDefaults.didChangeNotification, object: nil)
     }
 
-    
-    
-    // MARK: - Table view data source
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 2
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return 2
-            
-        default:
-            return 0
-        }
-    }
-    
-    
     @objc func userDefaultsDidChange(_ notification: Notification) {
         // UserDefaultsの変更があったので画面の情報を更新する
         if let name = UserDefaults.standard.value(forKey: "name") as? String {
