@@ -37,6 +37,21 @@ class NewQuizViewController: UIViewController {
             setNewQuiz()
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        if let scale = UserDefaults.standard.value(forKey: "labelScale") as? Int {
+            var fontScale: CGFloat = 17.0
+            switch scale {
+            case 0:
+                fontScale = 15.0
+            case 2:
+                fontScale = 19.0
+            default:
+                fontScale = 17.0
+            }
+            questionLabel.font = questionLabel.font.withSize(fontScale)
+            answerLabel.font = answerLabel.font.withSize(fontScale)
+        }
+    }
     
     @IBAction func answerNextButtonPressed(_ sender: UIButton) {
         
@@ -50,8 +65,12 @@ class NewQuizViewController: UIViewController {
         }
         
         if answerNextButton.currentTitle == "Answer" {
+            guard let quiz = self.pickedQuiz else { return }
             DispatchQueue.main.async {
-                self.answerLabel.text = self.pickedQuiz?.answer ?? ""
+                self.answerLabel.text = quiz.answer
+                if !quiz.explanation.isEmpty {
+                    self.answerLabel.text = "\(quiz.answer)\n\(quiz.explanation)"
+                }
                 if self.moveToNextFlag {
                     self.questionLabel.text = self.questionWithSlash
                     self.answerNextButton.setTitle("Next", for: .normal)
