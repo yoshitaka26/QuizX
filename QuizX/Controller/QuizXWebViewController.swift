@@ -14,6 +14,7 @@ class QuizXWebViewController: UIViewController {
     @IBOutlet weak var webViewContainer: UIView!
     
     var webView: WKWebView!
+    var accessURL: String = "https://quizx.net"
     
     required init?(coder: NSCoder) {
         // 2 WKWebViewConfiguration の生成
@@ -37,7 +38,7 @@ class QuizXWebViewController: UIViewController {
         webView.translatesAutoresizingMaskIntoConstraints = false
         
         // 7 URLオブジェクトを生成
-        let myURL = URL(string:"https://quizx.net")
+        let myURL = URL(string: accessURL)
         // 8 URLRequestオブジェクトを生成
         let myRequest = URLRequest(url: myURL!)
         

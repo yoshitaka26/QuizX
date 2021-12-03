@@ -9,38 +9,47 @@
 import UIKit
 
 class SettingTableViewController: UITableViewController {
-    @IBOutlet weak var nameLabel: UITableViewCell!
+    
     @IBOutlet weak var versionLabel: UILabel!
     
+    @IBOutlet weak var labelScale: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // UserDefaultsの情報を画面にセットする
-        if let name = UserDefaults.standard.value(forKey: "name") as? String {
-            nameLabel.textLabel?.text = name
+        if let scale = UserDefaults.standard.value(forKey: "labelScale") as? Int {
+            labelScale.selectedSegmentIndex = scale
         }
         
         //アプリバージョン
         if let version: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
             versionLabel.text = version
         }
-        
-        // UserDefaultsの変更を監視する
-        NotificationCenter.default.addObserver(self, selector: #selector(userDefaultsDidChange),
-                                               name: UserDefaults.didChangeNotification, object: nil)
     }
-
-    @objc func userDefaultsDidChange(_ notification: Notification) {
-        // UserDefaultsの変更があったので画面の情報を更新する
-        if let name = UserDefaults.standard.value(forKey: "name") as? String {
-            nameLabel.textLabel?.text = name
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            switch indexPath.row {
+            case 0:
+                let storyboard = UIStoryboard(name: "QuizXWeb", bundle: nil)
+                let vc = storyboard.instantiateViewController(identifier: "QuizXWeb")
+                self.navigationController?.pushViewController(vc, animated: true)
+            default:
+                let storyboard = UIStoryboard(name: "QuizXWeb", bundle: nil)
+                let vc = storyboard.instantiateViewController(identifier: "QuizXWeb")
+                if let webVC = vc as? QuizXWebViewController {
+                    webVC.accessURL = "https://twitter.com/QuizXix"
+                }
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        } else if indexPath.section == 2 {
+            let storyboard = UIStoryboard(name: "QuizXWeb", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "QuizXWeb")
+            if let webVC = vc as? QuizXWebViewController {
+                webVC.accessURL = "https://quizx.net/privacy-policy/"
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
-    deinit {
-        // UserDefaultsの変更の監視を解除する
-        NotificationCenter.default.removeObserver(self, name: UserDefaults.didChangeNotification, object: nil)
+    @IBAction func labelScaleSelected(_ sender: UISegmentedControl) {
+        UserDefaults.standard.set(sender.selectedSegmentIndex, forKey: "labelScale")
     }
-    
-    
 }

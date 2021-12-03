@@ -28,8 +28,10 @@ struct NewQuizDataExcel: Codable {
 }
 
 struct NewQuizDataSet: Codable {
-    let q: String
-    let a: String
+    let url: String
+    let question: String
+    let answer: String
+    let explanation: String
 }
 
 

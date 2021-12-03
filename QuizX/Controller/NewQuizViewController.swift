@@ -22,39 +22,15 @@ class NewQuizViewController: UIViewController {
     private var pickedIndex: Int = 0
     private var stopFlag: Bool = false
     private var slashFlag: Bool = false
-    private var textShowedFlag: Bool = false
+    private var needSlashAtEnd: Bool = true
     private var moveToNextFlag: Bool = false
     
+    private var questionForShare: String = ""
     private var questionWithSlash: String = ""
-    
-    var buttonFlag: Bool {
-        get {
-            return true
-        }
-        
-        set {
-            shareButton.setImage(#imageLiteral(resourceName: "twitterLogo"), for: .normal)
-            moveToNextFlag = true
-            
-            if answerNextButton.currentTitle == "Slash" {
-                DispatchQueue.main.async {
-                    self.answerNextButton.setTitle("Answer", for: .normal)
-                }
-            } else if answerNextButton.currentTitle == "Answer"  {
-                textShowedFlag = true
-            } else {
-                self.questionLabel.text = self.questionWithSlash
-                DispatchQueue.main.async {
-                    self.answerNextButton.setTitle("Next", for: .normal)
-                }
-            }
-        }
-    }
     
     override func viewDidLoad() {
         answerNextButton.layer.cornerRadius = answerNextButton.frame.size.height / 4
         shareButton.layer.cornerRadius = shareButton.frame.size.height / 4
-        
         
         if let data = quizDataExcelBrain.getNewQuizDataFromJSONFile() {
             newQuizSetArray = data
@@ -69,13 +45,13 @@ class NewQuizViewController: UIViewController {
             stopFlag = true
             DispatchQueue.main.async {
                 self.answerNextButton.setTitle("Answer", for: .normal)
+                self.shareButton.isHidden = false
             }
         }
         
         if answerNextButton.currentTitle == "Answer" {
             DispatchQueue.main.async {
-                self.answerLabel.text = self.pickedQuiz?.a ?? ""
-                
+                self.answerLabel.text = self.pickedQuiz?.answer ?? ""
                 if self.moveToNextFlag {
                     self.questionLabel.text = self.questionWithSlash
                     self.answerNextButton.setTitle("Next", for: .normal)
@@ -95,22 +71,22 @@ class NewQuizViewController: UIViewController {
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
         
-        if moveToNextFlag {
-            let quizXURL = "https://quizx.net/"
-            var text = ""
-            
-            if let quiz = pickedQuiz {
-                text = "\(quiz.q)"
-            }
-            
-            text.append("\n\n\(quizXURL)")
-            
-            let encodedText = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-            if let encodedText = encodedText,
-                let url = URL(string: "https://twitter.com/intent/tweet?text=\(encodedText)") {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            }
+        var quizXURL = "https://quizx.net/"
+        let quizXTag = "#早押しQuizX"
+        var text = questionForShare
+        
+        if let quiz = pickedQuiz {
+            quizXURL = quiz.url
         }
+        
+        text.append("\n\n\(quizXURL)\n\(quizXTag)")
+        
+        let encodedText = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        if let encodedText = encodedText,
+           let url = URL(string: "https://twitter.com/intent/tweet?text=\(encodedText)") {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+        
     }
     
     
@@ -124,7 +100,7 @@ class NewQuizViewController: UIViewController {
         
         answerLabel.text = ""
         questionWithSlash = ""
-        let question = pickedQuiz?.q ?? "コンプリート！"
+        let question = pickedQuiz?.question ?? "コンプリート！"
         
         questionUpdate(question)
         
@@ -134,10 +110,10 @@ class NewQuizViewController: UIViewController {
     }
     
     func questionUpdate(_ question: String)  {
-        shareButton.setImage(nil, for: .normal)
+        shareButton.isHidden = true
         
         stopFlag = false
-        textShowedFlag = false
+        needSlashAtEnd = true
         moveToNextFlag = false
         
         questionLabel.text = ""
@@ -157,16 +133,33 @@ class NewQuizViewController: UIViewController {
                     } else {
                         textAfterSlash.append(letter)
                         if self.slashFlag {
-                            self.questionLabel.text?.append(" ／ ")
+                            self.questionLabel.text?.append(" / ")
                             self.slashFlag = false
+                            self.needSlashAtEnd = false
+                            self.questionForShare = self.questionLabel.text ?? ""
+                            
+                            self.shareButton.isHidden = false
                         }
                     }
                     textCheckerForButton.append(letter)
                     
                     if textCheckerForButton == question {
+                        self.moveToNextFlag = true
+                        if self.needSlashAtEnd {
+                            self.questionLabel.text?.append(" / ")
+                            self.questionForShare = self.questionLabel.text ?? ""
+                            self.answerNextButton.setTitle("Answer", for: .normal)
+                            self.shareButton.isHidden = false
+                        }
                         let textBeforeSlash = self.questionLabel.text
                         self.questionWithSlash = textBeforeSlash! + textAfterSlash
-                        self.buttonFlag = true
+                        if self.answerNextButton.currentTitle == "..." {
+                            self.questionLabel.text = self.questionWithSlash
+                            self.shareButton.isHidden = false
+                            DispatchQueue.main.async {
+                                self.answerNextButton.setTitle("Next", for: .normal)
+                            }
+                        }
                     }
                 }
             }
