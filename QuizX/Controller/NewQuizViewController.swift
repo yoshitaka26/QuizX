@@ -22,6 +22,7 @@ class NewQuizViewController: UIViewController {
     private var pickedIndex: Int = 0
     private var stopFlag: Bool = false
     private var slashFlag: Bool = false
+    private var questionShowsAllFlag: Bool = false
     private var needSlashAtEnd: Bool = true
     private var moveToNextFlag: Bool = false
     
@@ -56,6 +57,15 @@ class NewQuizViewController: UIViewController {
     @IBAction func answerNextButtonPressed(_ sender: UIButton) {
         
         if answerNextButton.currentTitle == "Slash" {
+            if questionShowsAllFlag {
+                self.questionLabel.text?.append(" / ")
+                self.questionForShare = self.questionLabel.text ?? ""
+                self.questionWithSlash.append(" / ")
+                DispatchQueue.main.async {
+                    self.answerNextButton.setTitle("Answer", for: .normal)
+                    self.shareButton.isHidden = false
+                }
+            }
             slashFlag = true
             stopFlag = true
             DispatchQueue.main.async {
@@ -89,7 +99,6 @@ class NewQuizViewController: UIViewController {
     
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
-        
         var quizXURL = "https://quizx.net/"
         let quizXTag = "#早押しQuizX"
         var text = questionForShare
@@ -132,6 +141,7 @@ class NewQuizViewController: UIViewController {
         shareButton.isHidden = true
         
         stopFlag = false
+        questionShowsAllFlag = false
         needSlashAtEnd = true
         moveToNextFlag = false
         
@@ -146,7 +156,6 @@ class NewQuizViewController: UIViewController {
             
             Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { (timer) in
                 DispatchQueue.main.async {
-                    
                     if !self.stopFlag {
                         self.questionLabel.text?.append(letter)
                     } else {
@@ -163,13 +172,9 @@ class NewQuizViewController: UIViewController {
                     textCheckerForButton.append(letter)
                     
                     if textCheckerForButton == question {
+                        self.questionShowsAllFlag = true
                         self.moveToNextFlag = true
-                        if self.needSlashAtEnd {
-                            self.questionLabel.text?.append(" / ")
-                            self.questionForShare = self.questionLabel.text ?? ""
-                            self.answerNextButton.setTitle("Answer", for: .normal)
-                            self.shareButton.isHidden = false
-                        }
+                        
                         let textBeforeSlash = self.questionLabel.text
                         self.questionWithSlash = textBeforeSlash! + textAfterSlash
                         if self.answerNextButton.currentTitle == "..." {
