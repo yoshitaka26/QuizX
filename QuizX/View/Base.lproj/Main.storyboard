@@ -94,12 +94,46 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="WYo-QS-42c">
+                                        <rect key="frame" x="0.0" y="242" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WYo-QS-42c" id="MSW-Nm-76D">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="YTK-j4-MCz">
+                                                    <rect key="frame" x="317" y="6.5" width="87" height="32"/>
+                                                    <segments>
+                                                        <segment title="ON"/>
+                                                        <segment title="OFF"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="labelScaleSelected:" destination="6oz-Og-Q4h" eventType="valueChanged" id="BjA-0Y-SSM"/>
+                                                        <action selector="slashSoundSelected:" destination="6oz-Og-Q4h" eventType="valueChanged" id="v9C-ip-d5G"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="回答音" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAT-ZL-ILA">
+                                                    <rect key="frame" x="20" y="11.5" width="52" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="YTK-j4-MCz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iAT-ZL-ILA" secondAttribute="trailing" constant="8" symbolic="YES" id="9KZ-j8-3ju"/>
+                                                <constraint firstItem="iAT-ZL-ILA" firstAttribute="leading" secondItem="MSW-Nm-76D" secondAttribute="leadingMargin" id="fN0-aD-oDq"/>
+                                                <constraint firstItem="YTK-j4-MCz" firstAttribute="centerY" secondItem="MSW-Nm-76D" secondAttribute="centerY" id="hgO-ZA-LTc"/>
+                                                <constraint firstAttribute="trailing" secondItem="YTK-j4-MCz" secondAttribute="trailing" constant="10" id="jCv-GY-tJS"/>
+                                                <constraint firstItem="iAT-ZL-ILA" firstAttribute="centerY" secondItem="MSW-Nm-76D" secondAttribute="centerY" id="uvp-GM-3SV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="その他" id="Mko-th-uBv">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="t1v-Q6-hDh" detailTextLabel="Xew-oO-3cz" style="IBUITableViewCellStyleValue1" id="ReT-zI-wPp">
-                                        <rect key="frame" x="0.0" y="309" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="352.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ReT-zI-wPp" id="m46-gn-OJA">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -123,7 +157,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="07b-jh-FPk" detailTextLabel="tjV-Xg-ei4" style="IBUITableViewCellStyleValue1" id="eC0-1M-fRS">
-                                        <rect key="frame" x="0.0" y="352.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="396" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eC0-1M-fRS" id="gpy-qr-phG">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -147,7 +181,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="qHC-3p-Ega" style="IBUITableViewCellStyleDefault" id="xHD-oh-R7k">
-                                        <rect key="frame" x="0.0" y="396" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="439.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xHD-oh-R7k" id="Q1s-Cc-qb7">
                                             <rect key="frame" x="0.0" y="0.0" width="384.5" height="43.5"/>
@@ -174,6 +208,7 @@
                     <navigationItem key="navigationItem" id="ia9-zq-K1j"/>
                     <connections>
                         <outlet property="labelScale" destination="fUX-ht-hrp" id="stY-hC-Dw5"/>
+                        <outlet property="slashSound" destination="YTK-j4-MCz" id="YLw-pz-9V1"/>
                         <outlet property="versionLabel" destination="Xew-oO-3cz" id="r0r-By-Wfq"/>
                     </connections>
                 </tableViewController>
@@ -287,8 +322,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="v4c-Pr-Q7T">
-                        <barButtonItem key="rightBarButtonItem" id="PnD-cp-G0n">
-                            <imageReference key="image" image="gearshape.fill" catalog="system" symbolScale="large"/>
+                        <barButtonItem key="rightBarButtonItem" largeContentSizeImage="settingButtonImg" width="50" id="PnD-cp-G0n">
+                            <imageReference key="image" image="settingButtonImg" symbolScale="large"/>
                             <color key="tintColor" name="appColor"/>
                             <connections>
                                 <segue destination="6oz-Og-Q4h" kind="show" id="Soy-AA-USV"/>
@@ -299,6 +334,7 @@
                         <outlet property="answerLabel" destination="lOq-Sa-lT4" id="W8G-Lr-Zgj"/>
                         <outlet property="answerNextButton" destination="akD-ak-5GC" id="Qud-Au-Oea"/>
                         <outlet property="questionLabel" destination="oYh-Nj-wT4" id="k1p-C0-hKz"/>
+                        <outlet property="settingButton" destination="PnD-cp-G0n" id="mvO-0e-Zuk"/>
                         <outlet property="shareButton" destination="TUp-sJ-y6E" id="7gW-mF-Jqh"/>
                     </connections>
                 </viewController>
@@ -326,7 +362,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="settingButtonImg" width="60" height="60"/>
         <image name="twitterLogo" width="133" height="133"/>
         <namedColor name="appColor">
             <color red="1" green="0.33700001239776611" blue="0.33700001239776611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

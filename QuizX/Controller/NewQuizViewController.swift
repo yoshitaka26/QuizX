@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class NewQuizViewController: UIViewController {
     
@@ -14,8 +15,11 @@ class NewQuizViewController: UIViewController {
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var answerNextButton: UIButton!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var settingButton: UIBarButtonItem!
     
     let quizDataExcelBrain = QuizDataExcelBrain()
+    
+    private var player: AVAudioPlayer?
     
     private var newQuizSetArray: [NewQuizDataSet] = []
     private var pickedQuiz: NewQuizDataSet? = nil
@@ -29,16 +33,26 @@ class NewQuizViewController: UIViewController {
     private var questionForShare: String = ""
     private var questionWithSlash: String = ""
     
+    private var slashSound: Bool = false
+    
     override func viewDidLoad() {
         answerNextButton.layer.cornerRadius = answerNextButton.frame.size.height / 4
         shareButton.layer.cornerRadius = shareButton.frame.size.height / 4
         
+        settingButton.image = UIImage(named: "settingButtonImg")?.withRenderingMode(.alwaysOriginal)
+        
         if let data = quizDataExcelBrain.getNewQuizDataFromJSONFile() {
             newQuizSetArray = data
-            setNewQuiz()
         }
+        answerLabel.text = ""
+        questionLabel.text = ""
+        self.shareButton.isHidden = true
+        self.answerNextButton.setTitle("Start", for: .normal)
     }
     override func viewWillAppear(_ animated: Bool) {
+        if let sound = UserDefaults.standard.value(forKey: "slashSound") as? Bool {
+            slashSound = sound
+        }
         if let scale = UserDefaults.standard.value(forKey: "labelScale") as? Int {
             var fontScale: CGFloat = 17.0
             switch scale {
@@ -55,8 +69,14 @@ class NewQuizViewController: UIViewController {
     }
     
     @IBAction func answerNextButtonPressed(_ sender: UIButton) {
+        if answerNextButton.currentTitle == "Start" {
+            setNewQuiz()
+        }
         
         if answerNextButton.currentTitle == "Slash" {
+            if slashSound {
+                makeSound()
+            }
             if questionShowsAllFlag {
                 self.questionLabel.text?.append(" / ")
                 self.questionForShare = self.questionLabel.text ?? ""
@@ -117,7 +137,6 @@ class NewQuizViewController: UIViewController {
         
     }
     
-    
     func setNewQuiz() {
         if let index = newQuizSetArray.indices.randomElement() {
             pickedIndex = index
@@ -128,7 +147,16 @@ class NewQuizViewController: UIViewController {
         
         answerLabel.text = ""
         questionWithSlash = ""
-        let question = pickedQuiz?.question ?? "コンプリート！"
+        guard let question = pickedQuiz?.question else {
+            let question = "コンプリート！"
+            self.questionForShare = question
+            DispatchQueue.main.async {
+                self.questionLabel.text = question
+                self.answerNextButton.setTitle("Congratulations", for: .normal)
+                self.shareButton.isHidden = false
+            }
+             return
+        }
         
         questionUpdate(question)
         
@@ -188,6 +216,17 @@ class NewQuizViewController: UIViewController {
                 }
             }
             charIndex += 1
+        }
+    }
+    
+    func makeSound() {
+        if let soundURL = Bundle.main.url(forResource: "slashSound", withExtension: "mp4") {
+            do {
+                player = try AVAudioPlayer(contentsOf: soundURL)
+                player?.play()
+            } catch {
+                print("error")
+            }
         }
     }
 }

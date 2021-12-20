@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,7 @@
 		E412C204256DB56600DE6AA4 /* NewQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E412C203256DB56600DE6AA4 /* NewQuizViewController.swift */; };
 		E412C206256DE62000DE6AA4 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E412C205256DE62000DE6AA4 /* SettingTableViewController.swift */; };
 		E412C20A256DEE4E00DE6AA4 /* newQuizData.json in Resources */ = {isa = PBXBuildFile; fileRef = E412C209256DEE4E00DE6AA4 /* newQuizData.json */; };
-		E42E3E9B24E904CC00C291D1 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E42E3E9A24E904CC00C291D1 /* IQKeyboardManagerSwift */; };
+		E415C9172770AC680036FE84 /* slashSound.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E415C9162770AC680036FE84 /* slashSound.mp4 */; };
 		E434C1772758C0E600B0EE7B /* quizData_20211202.json in Resources */ = {isa = PBXBuildFile; fileRef = E434C1762758C0E600B0EE7B /* quizData_20211202.json */; };
 		E43F042E24712BA6003B8606 /* ScoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43F042D24712BA6003B8606 /* ScoreData.swift */; };
 		E488097725353E500062C068 /* ScoreDataRecordBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E488097625353E500062C068 /* ScoreDataRecordBrain.swift */; };
@@ -44,6 +44,7 @@
 		E412C203256DB56600DE6AA4 /* NewQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewQuizViewController.swift; sourceTree = "<group>"; };
 		E412C205256DE62000DE6AA4 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		E412C209256DEE4E00DE6AA4 /* newQuizData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = newQuizData.json; sourceTree = "<group>"; };
+		E415C9162770AC680036FE84 /* slashSound.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = slashSound.mp4; sourceTree = "<group>"; };
 		E434C1762758C0E600B0EE7B /* quizData_20211202.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = quizData_20211202.json; sourceTree = "<group>"; };
 		E43F042D24712BA6003B8606 /* ScoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreData.swift; sourceTree = "<group>"; };
 		E488097625353E500062C068 /* ScoreDataRecordBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreDataRecordBrain.swift; sourceTree = "<group>"; };
@@ -63,7 +64,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3620583879EB3DA40F7B8A0A /* Pods_QuizX.framework in Frameworks */,
-				E42E3E9B24E904CC00C291D1 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +114,7 @@
 				E40B1DA824683C4C00CB8C3F /* Controller */,
 				E40B1DA724683C4000CB8C3F /* View */,
 				E40B1D9C246825A800CB8C3F /* Assets.xcassets */,
+				E415C9162770AC680036FE84 /* slashSound.mp4 */,
 				E40B1D9E246825A800CB8C3F /* LaunchScreen.storyboard */,
 				E40B1DA1246825A800CB8C3F /* Info.plist */,
 				E4FB439E24B2842A00975C0D /* Constants.swift */,
@@ -190,7 +191,6 @@
 			);
 			name = QuizX;
 			packageProductDependencies = (
-				E42E3E9A24E904CC00C291D1 /* IQKeyboardManagerSwift */,
 			);
 			productName = QuizX;
 			productReference = E40B1D90246825A200CB8C3F /* QuizX.app */;
@@ -221,7 +221,6 @@
 			);
 			mainGroup = E40B1D87246825A200CB8C3F;
 			packageReferences = (
-				E42E3E9924E904CC00C291D1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = E40B1D91246825A200CB8C3F /* Products */;
 			projectDirPath = "";
@@ -238,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E434C1772758C0E600B0EE7B /* quizData_20211202.json in Resources */,
+				E415C9172770AC680036FE84 /* slashSound.mp4 in Resources */,
 				E49A70502479C8F600929251 /* quizDataBeginner.json in Resources */,
 				E40B1DA0246825A800CB8C3F /* LaunchScreen.storyboard in Resources */,
 				E49A70522479C8FD00929251 /* quizDataIntermediate.json in Resources */,
@@ -440,7 +440,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.0.1;
+				CURRENT_PROJECT_VERSION = 2.0.0.2;
 				DEVELOPMENT_TEAM = VKV3Y2GW5Q;
 				INFOPLIST_FILE = QuizX/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -462,7 +462,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2.0.0.1;
+				CURRENT_PROJECT_VERSION = 2.0.0.2;
 				DEVELOPMENT_TEAM = VKV3Y2GW5Q;
 				INFOPLIST_FILE = QuizX/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -500,25 +500,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		E42E3E9924E904CC00C291D1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.5.6;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		E42E3E9A24E904CC00C291D1 /* IQKeyboardManagerSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E42E3E9924E904CC00C291D1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
-			productName = IQKeyboardManagerSwift;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E40B1D88246825A200CB8C3F /* Project object */;
 }
