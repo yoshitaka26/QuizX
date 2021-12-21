@@ -42,7 +42,7 @@ struct QuizDataExcelBrain {
     func getNewQuizDataFromJSONFile() -> [NewQuizDataSet]? {
         let decoder = JSONDecoder()
 
-        if let path = Bundle.main.url(forResource: "quizData_20211202", withExtension: "json") {
+        if let path = Bundle.main.url(forResource: "quizData_20211220", withExtension: "json") {
             if let data = try? Data(contentsOf: path) {
                 do {
                     let quizData = try decoder.decode(NewQuizDataExcel.self, from: data)
